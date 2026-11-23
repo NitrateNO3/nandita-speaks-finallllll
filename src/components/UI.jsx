@@ -88,7 +88,7 @@ export function Accordion({ q, a }) {
         onClick={() => setOpen((v) => !v)}
         className="flex w-full items-start justify-between gap-6 py-6 text-left"
       >
-        <h3 className="display-m text-[1.35rem] sm:text-[1.6rem] pr-4 transition-colors duration-300" style={{ color: open ? '#9c6249' : '#171717' }}>
+        <h3 className="display-m text-[1.35rem] sm:text-[1.6rem] pr-4 transition-colors duration-300" style={{ color: open ? 'var(--color-copper-deep)' : 'var(--color-ink)' }}>
           {q}
         </h3>
         <span className={`mt-2 flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-ink/25 transition-all duration-500 ${open ? 'rotate-45 bg-ink text-ivory border-ink' : ''}`}>

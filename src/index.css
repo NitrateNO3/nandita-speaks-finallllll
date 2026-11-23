@@ -1,13 +1,14 @@
 @import "tailwindcss";
 
 @theme {
-  --color-ink: #171717;
-  --color-ink-soft: #2a2724;
-  --color-ivory: #f4efe7;
-  --color-ivory-dim: #e7e0d4;
-  --color-copper: #b77b61;
-  --color-copper-deep: #9c6249;
-  --color-stone: #d8cfc3;
+  /* Nandita Speaks — approved brand palette */
+  --color-ink: #171717;        /* Soft Black */
+  --color-ink-soft: #2a2724;   /* soft lift for hovers */
+  --color-ivory: #f4efe7;      /* Warm Ivory */
+  --color-ivory-dim: #e7e0d4;  /* deeper ivory (panels) */
+  --color-copper: #b77b61;     /* Muted Copper */
+  --color-copper-deep: #9c6249;/* deep copper (fields, links) */
+  --color-stone: #d8cfc3;      /* Warm Stone */
 
   --font-display: "Fraunces", Georgia, serif;
   --font-sans: "Space Grotesk", system-ui, sans-serif;
@@ -47,9 +48,6 @@ html.lenis body {
 body {
   margin: 0;
   background-color: var(--color-ivory);
-  /* faint dotted "desk paper" under everything */
-  background-image: radial-gradient(rgba(23, 23, 23, 0.05) 1px, transparent 1.4px);
-  background-size: 23px 23px;
   color: var(--color-ink);
   font-family: var(--font-sans);
   font-weight: 400;
@@ -63,15 +61,15 @@ body {
 
 h1, h2, h3, h4 {
   font-family: var(--font-display);
-  font-weight: 450;
-  letter-spacing: -0.02em;
-  line-height: 0.96;
-  /* soft terminals + a touch of wonk = warm, literary, hand-set feel */
-  font-variation-settings: "SOFT" 28, "WONK" 1;
+  font-weight: 420;
+  letter-spacing: -0.021em;
+  line-height: 0.98;
+  /* clean, classic high-contrast Fraunces — no wonk */
+  font-variation-settings: "SOFT" 0, "WONK" 0;
 }
 
 .serif-italic {
-  font-variation-settings: "SOFT" 40, "WONK" 1;
+  font-variation-settings: "SOFT" 0, "WONK" 0;
 }
 
 /* ---------- Grain overlay ---------- */
