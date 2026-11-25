@@ -1,0 +1,202 @@
+<!-- title: Nandita Thakur | Motivational Speaker for Women | active: home | page: Home -->
+<style>
+  /* Home: the most cinematic page. Black hero with a tall portrait, then alternating ivory/stone chapters. */
+  .hero { background: var(--ink); color: var(--ivory); overflow: hidden; }
+  .hero-grid { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: 24px; }
+  .hero-text { grid-column: 1 / span 7; padding-block: 96px 104px; display: flex; flex-direction: column; gap: 30px; align-self: center; }
+  .hero-h1 { font-family: var(--sans); font-size: 13px; font-weight: 600; letter-spacing: .18em; text-transform: uppercase; color: var(--copper); line-height: 1.5; max-width: 30em; }
+  .hero .display { font-size: clamp(44px, 6.4vw, 92px); line-height: 1.0; max-width: 8.6em; letter-spacing: -.012em; }
+  .hero .display em { font-style: normal; color: var(--copper); }
+  .hero .intro { font-size: clamp(18px, 1.45vw, 20px); line-height: 1.65; color: var(--muted-dark); max-width: 31em; }
+  .hero .intro i { color: var(--ivory); }
+  .hero .support { display: flex; align-items: center; gap: 16px; font-size: 13px; letter-spacing: .14em; text-transform: uppercase; color: var(--ivory); }
+  .hero .support::before { content: ""; width: 44px; height: 1px; background: var(--copper); flex: none; }
+  .hero-img { grid-column: 8 / -1; position: relative; margin-right: calc(-1 * max(var(--pad), env(safe-area-inset-right, 0px))); }
+  .hero-img .ph { height: 100%; min-height: 640px; }
+  @media (max-width: 1023px) { .hero-text { padding-block: 72px; } .hero-img .ph { min-height: 520px; } }
+  @media (max-width: 767px) {
+    .hero-grid { grid-template-columns: minmax(0,1fr); }
+    .hero-text { grid-column: 1; padding-block: 44px 40px; gap: 22px; }
+    .hero-img { grid-column: 1; margin-inline: calc(-1 * var(--pad)); }
+    .hero-img .ph { min-height: 0; aspect-ratio: 4 / 4.6 !important; }
+  }
+
+  .why { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: 24px; row-gap: 56px; }
+  .why-head { grid-column: 1 / span 5; }
+  .why-head h2 { font-size: clamp(32px, 3.6vw, 52px); }
+  .why-img { grid-column: 2 / span 4; grid-row: 2; }
+  .why-text { grid-column: 7 / span 6; grid-row: 1 / span 2; display: flex; flex-direction: column; gap: 26px; padding-top: 8px; }
+  .why-text .first { font-family: var(--display); font-size: clamp(22px, 2vw, 28px); line-height: 1.42; }
+  .why-text p:not(.first) { font-size: 18px; line-height: 1.8; color: var(--muted); }
+  @media (max-width: 767px) { .why { grid-template-columns: minmax(0,1fr); row-gap: 32px; } .why > * { grid-column: 1 !important; grid-row: auto !important; } .why-img { max-width: 78%; } }
+
+  .aud-wrap { display: grid; grid-template-columns: repeat(12, minmax(0,1fr)); column-gap: 24px; row-gap: 48px; }
+  .aud-wrap > h2 { grid-column: 1 / span 4; }
+  .audiences { grid-column: 6 / -1; display: grid; grid-template-columns: 1fr 1fr; border-top: 1px solid var(--ink); }
+  .aud { padding: 36px 40px 4px 0; display: flex; flex-direction: column; gap: 16px; min-width: 0; }
+  .aud + .aud { padding: 36px 0 4px 40px; border-left: 1px solid rgba(23,23,23,.25); }
+  .aud .idx { font-family: var(--display); font-size: 40px; line-height: 1; color: var(--copper-deep); }
+  @media (max-width: 1023px) { .aud-wrap > h2, .audiences { grid-column: 1 / -1; } }
+  @media (max-width: 767px) { .aud-wrap { grid-template-columns: minmax(0,1fr); } .audiences { grid-template-columns: 1fr; } .aud, .aud + .aud { padding: 28px 0; border-left: 0; } .aud + .aud { border-top: 1px solid rgba(23,23,23,.25); } }
+
+  .themes { display: grid; grid-template-columns: repeat(12, minmax(0,1fr)); column-gap: 24px; }
+  .themes-head { grid-column: 1 / span 4; position: sticky; top: calc(var(--header-h) + 56px); align-self: start; }
+  .themes-list { grid-column: 6 / -1; list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--ink); }
+  .theme { display: grid; grid-template-columns: 96px minmax(0, 1fr); gap: 8px 24px; padding: 34px 0 36px; border-bottom: 1px solid var(--line); }
+  .theme .n { font-family: var(--display); font-size: 46px; line-height: .9; color: var(--copper); }
+  .theme h3 { margin-bottom: 10px; }
+  .theme p { color: var(--muted); max-width: 34em; }
+  @media (max-width: 767px) { .themes { grid-template-columns: minmax(0,1fr); row-gap: 32px; } .themes > * { grid-column: 1 !important; } .themes-head { position: static; } .theme { grid-template-columns: 52px minmax(0,1fr); padding: 26px 0; } .theme .n { font-size: 30px; } }
+
+  .chemo { background: var(--ink); color: var(--ivory); display: grid; grid-template-columns: 1fr 1fr; }
+  .chemo .ph { min-height: 680px; height: 100%; }
+  .chemo .txt { padding: 120px max(var(--pad), env(safe-area-inset-right, 0px)) 120px 88px; display: flex; flex-direction: column; gap: 26px; justify-content: center; max-width: 720px; }
+  .chemo h2 { font-size: clamp(32px, 3.6vw, 52px); }
+  .chemo p { color: var(--muted-dark); font-size: 18px; line-height: 1.8; }
+  @media (max-width: 1023px) { .chemo .txt { padding: 80px var(--pad) 80px 48px; } .chemo .ph { min-height: 560px; } }
+  @media (max-width: 767px) { .chemo { grid-template-columns: 1fr; } .chemo .ph { min-height: 0; aspect-ratio: 4 / 3.4 !important; } .chemo .txt { padding: 56px max(var(--pad), env(safe-area-inset-right, 0px)) 64px max(var(--pad), env(safe-area-inset-left, 0px)); } }
+
+  .spoken { display: grid; grid-template-columns: repeat(12, minmax(0,1fr)); column-gap: 24px; align-items: baseline; border-top: 1px solid var(--ink); padding-top: 40px; }
+  .spoken h2 { grid-column: 1 / span 4; font-size: clamp(24px, 2vw, 30px); }
+  .spoken .stmt { grid-column: 6 / -1; font-family: var(--display); font-size: clamp(28px, 3.2vw, 46px); line-height: 1.2; }
+  .spoken .more { grid-column: 6 / -1; margin-top: 28px; }
+  @media (max-width: 767px) { .spoken { grid-template-columns: 1fr; row-gap: 20px; } .spoken > * { grid-column: 1 !important; } }
+
+  .book { display: grid; grid-template-columns: repeat(12, minmax(0,1fr)); column-gap: 24px; align-items: center; }
+  .book .cover { grid-column: 2 / span 3; }
+  .book .cover .ph { box-shadow: 22px 22px 0 var(--ink); }
+  .book .book-text { grid-column: 7 / span 5; display: flex; flex-direction: column; gap: 26px; }
+  @media (max-width: 1023px) { .book .cover { grid-column: 1 / span 5; } }
+  @media (max-width: 767px) { .book { grid-template-columns: 1fr; row-gap: 48px; } .book > * { grid-column: 1 !important; } .book .cover { max-width: 230px; } .book .cover .ph { box-shadow: 14px 14px 0 var(--ink); } }
+
+  .faq-grid { display: grid; grid-template-columns: repeat(12, minmax(0,1fr)); column-gap: 24px; row-gap: 32px; }
+  .faq-grid .faq-head { grid-column: 1 / span 4; }
+  .faq-grid .faq-body { grid-column: 6 / -1; }
+  @media (max-width: 767px) { .faq-grid { grid-template-columns: 1fr; } .faq-grid > * { grid-column: 1 !important; } }
+</style>
+
+<section class="hero" aria-labelledby="hero-h1">
+  <div class="wrap">
+    <div class="hero-grid">
+      <div class="hero-text load-in">
+        <h1 id="hero-h1" class="hero-h1">Nandita Thakur: Motivational Speaker for Women</h1>
+        <p class="display">Life after a setback can still be <em>your own.</em></p>
+        <p class="intro">I speak to women about believing in themselves again and finding a next step when life has not gone to plan. I am also an entrepreneur and the author of <i>Silent Screams</i>.</p>
+        <p class="support">Women-focused keynotes and motivational talks</p>
+        <div class="actions">
+          <a class="btn btn--light" href="contact.html" data-cta="hero">Invite Nandita to Speak</a>
+          <a class="link" href="about.html">Read my story <span aria-hidden="true">&rarr;</span></a>
+        </div>
+      </div>
+      <div class="hero-img">
+        {{py: ph("Editorial portrait, natural light. Priority-loaded hero image (AVIF/WebP, responsive crops).", "Hero portrait", ratio="auto", dark=True, alt="Nandita Thakur, motivational speaker for women")}}
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="band" aria-labelledby="why-h">
+  <div class="wrap why">
+    <div class="why-head sr"><h2 id="why-h">Why I speak to women about self-belief</h2></div>
+    <div class="why-img">{{py: ph("Relaxed, everyday photo of Nandita", "Photograph", ratio="4 / 5", alt="Plain description of the photo, checked against it")}}</div>
+    <div class="why-text">
+      <p class="first">I married young, became a mother early and did not finish college. When I realised my marriage might not work, I started working towards earning my own money. That gave me choices I would not otherwise have had.</p>
+      <p>I have had to rebuild more than once. I separated after 18 years of marriage. Both my parents had cancer at the same time and I looked after them. My father died while my mother was in treatment. I also had cancer myself. I know what it is like to look at your life and ask, &ldquo;What do I do now?&rdquo; That question is why I speak. You can read the full story on <a class="tl" href="about.html">my About page</a>.</p>
+    </div>
+  </div>
+</section>
+
+<section class="band on-stone" aria-labelledby="who-h">
+  <div class="wrap aud-wrap">
+    <h2 id="who-h" class="sr">Who can invite me to speak</h2>
+    <div class="audiences">
+      <div class="aud">
+        <span class="idx" aria-hidden="true">I</span>
+        <h3>Women&rsquo;s communities and events</h3>
+        <p class="muted">Talks for women&rsquo;s groups, associations and events, for audiences who want to hear an honest story and take something away to think about.</p>
+        <a class="link" href="speaking.html#women" style="align-self:flex-start">Talks for women&rsquo;s events <span aria-hidden="true">&rarr;</span></a>
+      </div>
+      <div class="aud">
+        <span class="idx" aria-hidden="true">II</span>
+        <h3>Companies and teams</h3>
+        <p class="muted">Sessions for teams and middle managers on rebuilding self-belief and keeping a life of your own outside work.</p>
+        <a class="link" href="speaking.html#companies" style="align-self:flex-start">Sessions for companies and teams <span aria-hidden="true">&rarr;</span></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="band" aria-labelledby="themes-h">
+  <div class="wrap themes">
+    <div class="themes-head sr"><h2 id="themes-h">What I speak about</h2></div>
+    <ol class="themes-list">
+      <li class="theme"><span class="n" aria-hidden="true">01</span><div><h3>Believing in yourself again</h3><p>Confidence can drop after one hard event or fade slowly over years. I talk about how self-belief goes missing and what a first step back can look like.</p></div></li>
+      <li class="theme"><span class="n" aria-hidden="true">02</span><div><h3>Having an identity of your own</h3><p>Family and work take most of the day. I talk about keeping a few interests that belong only to you.</p></div></li>
+      <li class="theme"><span class="n" aria-hidden="true">03</span><div><h3>Building independence</h3><p>Earning my own money gave me the freedom to make my own decisions. I share what that looked like for me.</p></div></li>
+      <li class="theme"><span class="n" aria-hidden="true">04</span><div><h3>Living through uncertainty</h3><p>Caring for my parents, my own cancer, starting over when plans changed. I talk about what that felt like and the practical things I did next.</p></div></li>
+      <li class="theme"><span class="n" aria-hidden="true">05</span><div><h3>Finding enjoyment again</h3><p>Singing helped me through treatment. I talk about making room for music, laughter and ordinary pleasures when life is hard.</p></div></li>
+    </ol>
+  </div>
+</section>
+
+<section class="chemo" aria-labelledby="chemo-h">
+  {{py: ph("Photo or permitted music video of Nandita singing, once supplied. Video loads only when played.", "Photo or music video", ratio="auto", dark=True, video=True, alt="Nandita Thakur singing")}}
+  <div class="txt">
+    <h2 id="chemo-h">I kept singing through chemotherapy</h2>
+    <p>When I was diagnosed I was living alone. The first thing I did was call my insurance agent to find out what my policy covered, and I began arranging my treatment before I told my family. That is how I cope: when something goes wrong, I start doing what needs to be done. Other people cope in other ways, and that is fine.</p>
+    <p>I carried on with my online music classes and kept singing through chemotherapy. Singing gave my days something that had nothing to do with being a patient. <span class="pending">+ one short, light line in Nandita&rsquo;s words</span></p>
+    <a class="link" href="about.html" style="align-self:flex-start">Read my full story <span aria-hidden="true">&rarr;</span></a>
+  </div>
+</section>
+
+<section class="band" aria-labelledby="spoken-h">
+  <div class="wrap">
+    <div class="spoken">
+      <h2 id="spoken-h">Where I have spoken</h2>
+      <p class="stmt">I have spoken at sessions for cancer patients.</p>
+      <p class="note small more"><b>Expandable</b><span>Organisation names, audience sizes, photos and audience feedback are added below this line as items, only once verified. Until then only this sentence shows.</span></p>
+    </div>
+  </div>
+</section>
+
+<section class="band on-stone" aria-labelledby="book-h">
+  <div class="wrap book">
+    <div class="cover">{{py: ph("Supplied cover artwork", "Book cover", ratio="2 / 3", alt="Silent Screams book cover by Nandita Thakur")}}</div>
+    <div class="book-text">
+      <h2 id="book-h" class="sr">My book, <i>Silent Screams</i></h2>
+      <p class="lede">I wrote <i>Silent Screams</i> to put difficult experiences into words and to find some closure. Writing it is part of why I can speak openly about hard experiences today.</p>
+      <a class="link" href="silent-screams.html" style="align-self:flex-start"><span>About the book <i>Silent Screams</i></span> <span aria-hidden="true">&rarr;</span></a>
+    </div>
+  </div>
+</section>
+
+<section class="band" aria-labelledby="blog-h" data-preview-only>
+  <div class="wrap stack" style="gap:44px">
+    <div style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:end;gap:20px">
+      <h2 id="blog-h" class="sr">From the blog</h2>
+      <a class="link" href="blog.html">All posts <span aria-hidden="true">&rarr;</span></a>
+    </div>
+    <p class="note"><b>Hidden for now</b><span>Shows the three newest posts automatically once at least three are published. Cards show layout only.</span></p>
+    <div class="cards">
+      {{py: "".join('<a class="card" href="article.html">' + ph("Post image, 4:3", "Post image", ratio="4 / 3") + '<div class="meta"><span>Category</span><time>Date</time></div><h3>Post title, up to two lines</h3><p>Two-line excerpt, cut off after the second line so cards stay the same height.</p></a>' for _ in range(3))}}
+    </div>
+  </div>
+</section>
+
+<section class="band on-stone" aria-labelledby="faq-h">
+  <div class="wrap faq-grid">
+    <div class="faq-head sr"><h2 id="faq-h">Questions organisers ask</h2></div>
+    <div class="faq-body">
+      {{py: faq([
+        ("Who is Nandita Thakur?", "Nandita Thakur is a motivational speaker for women, an entrepreneur and the author of Silent Screams. She gives keynotes and motivational talks about rebuilding belief in yourself after life&rsquo;s setbacks, drawing on her own experience of ending a long marriage, caring for her parents through cancer and being diagnosed with cancer herself."),
+        ("What does Nandita speak about?", "She speaks on five themes: believing in yourself again, having an identity of your own, building independence, living through uncertainty and finding enjoyment again. Each comes from her own experience, told honestly, with questions the audience can take away."),
+        ("Who can invite Nandita to speak?", "Women&rsquo;s communities, associations, event teams and people organising events for women inside companies. She also speaks to teams and middle managers about self-belief and keeping a life of your own outside work."),
+        ("What will the audience take away?", "A few questions to think about, such as which decision they could start making for themselves and what next step feels manageable. Nandita shares her own experience. She is not a therapist or a financial adviser, and her talks do not promise a particular result."),
+        ("How do I invite Nandita to speak?", "Send an enquiry through the contact form with the date or approximate timing, the audience and its size, whether the event is in person or online, and what you have in mind. You do not need to book a call first."),
+      ], "hfaq")}}
+      <p class="note small" style="margin-top:24px"><b>Later</b><span>Questions about online sessions, session length, languages and travel are added once Nandita confirms the answers.</span></p>
+    </div>
+  </div>
+</section>
+
+{{py: cta_band("Planning an event for women, or a session for your team? Tell me the date, the audience and what you have in mind.")}}

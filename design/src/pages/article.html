@@ -1,0 +1,65 @@
+<!-- title: Post title | Nandita Thakur | active: blog | page: Blog post -->
+<style>
+  .a-head .wrap { padding-block: 80px 48px; }
+  .a-head .t { max-width: 900px; margin-inline: auto; display: flex; flex-direction: column; gap: 24px; text-align: left; }
+  .crumbs { font-size: 13px; color: var(--muted); display: flex; gap: 10px; }
+  .crumbs a { text-decoration: none; border-bottom: 1px solid var(--copper); }
+  .a-meta { display: flex; flex-wrap: wrap; gap: 8px 28px; font-size: 14px; color: var(--muted); padding-top: 20px; border-top: 1px solid var(--line); }
+  .a-meta b { color: var(--ink); font-weight: 600; }
+  .a-meta .cat { color: var(--copper-deep); font-weight: 600; letter-spacing: .14em; text-transform: uppercase; font-size: 12px; }
+  .a-img { max-width: 1120px; margin-inline: auto; }
+  .body { max-width: var(--measure); margin-inline: auto; display: flex; flex-direction: column; gap: 1.2em; }
+  .body p { font-size: 18px; line-height: 1.8; }
+  .body h2 { font-size: clamp(26px, 2.4vw, 34px); margin-top: .8em; }
+  .body blockquote { margin: .6em 0; padding: 8px 0 8px 28px; border-left: 1px solid var(--copper); font-family: var(--display); font-size: clamp(24px, 2.2vw, 30px); line-height: 1.35; }
+  .body ul { margin: 0; padding-left: 1.2em; display: flex; flex-direction: column; gap: .5em; font-size: 18px; }
+  .body ul li::marker { color: var(--copper-deep); }
+  .author { max-width: var(--measure); margin: 72px auto 0; display: grid; grid-template-columns: 96px minmax(0,1fr); gap: 24px; padding: 32px 0; border-top: 1px solid var(--ink); border-bottom: 1px solid var(--line); align-items: center; }
+  .author .ph { aspect-ratio: 1; border-radius: 50%; }
+  .author .ph::before { border-radius: 50%; inset: 6px; }
+  .author .ph figcaption { display: none; }
+  @media (max-width: 767px) { .author { grid-template-columns: 72px minmax(0,1fr); } }
+</style>
+
+<article>
+  <header class="a-head">
+    <div class="wrap">
+      <div class="t load-in">
+        <nav class="crumbs" aria-label="Breadcrumb"><a href="blog.html">Blog</a><span aria-hidden="true">/</span><span>Category</span></nav>
+        <h1 class="page-title">Post title, set in Marcellus at page-title size, up to three lines</h1>
+        <div class="a-meta"><span class="cat">Category</span><span>By <b>Nandita Thakur</b></span><time>Publish date</time><span>Reading time, e.g. 6 min read</span></div>
+      </div>
+    </div>
+  </header>
+  <div class="wrap"><div class="a-img">{{py: ph("Featured image, 16:9. Also used as the default share image unless one is set in the CMS.", "Featured image", ratio="16 / 9")}}</div></div>
+  <div class="band"><div class="wrap">
+    <div class="body">
+      <p class="note small"><b>Template</b><span>The text below describes the rich-text styles. It is not article copy. Real posts come from the client. Each post gets Article structured data with Nandita Thakur as author.</span></p>
+      <p>Body paragraphs are Manrope 18 px with 1.8 line height, at a reading width of about 700 px. Paragraph spacing is a little over one line, so long first-person writing stays easy to follow on a phone.</p>
+      <h2>Subheading (H2) inside a post</h2>
+      <p>Subheadings use Marcellus. Posts can also contain H3s, inline links underlined in copper, images with captions and embedded video that loads only when played.</p>
+      <blockquote>Pull quotes sit between a copper hairline and the reading column, in Marcellus.</blockquote>
+      <ul><li>Bulleted lists use copper markers</li><li>Numbered lists follow the same spacing</li><li>Images can run at reading width or wider</li></ul>
+      {{py: ph("In-article image with caption", "Inline image", ratio="3 / 2")}}
+      <p>Every post has its own title tag, meta description, share image, unique slug and Article schema, all editable in the CMS.</p>
+    </div>
+    <aside class="author" aria-label="About the author">
+      {{py: ph("", "", ratio="1 / 1")}}
+      <div class="stack" style="gap:8px">
+        <p style="font-family:var(--display);font-size:22px">Nandita Thakur</p>
+        <p class="muted small">Nandita Thakur is a motivational speaker for women, an entrepreneur and the author of <i>Silent Screams</i>.</p><p class="pending" data-preview-only>second line about Nandita to be approved</p>
+        <a class="link" href="about.html" style="align-self:flex-start;font-size:14px">About Nandita <span aria-hidden="true">&rarr;</span></a>
+      </div>
+    </aside>
+    <div style="max-width:var(--measure);margin:40px auto 0"><a class="btn" href="contact.html">Invite Nandita to Speak</a></div>
+  </div></div>
+</article>
+
+<section class="band on-stone" aria-labelledby="rel-h">
+  <div class="wrap stack" style="gap:40px">
+    <h2 id="rel-h">More from this category</h2>
+    <div class="cards">
+      {{py: "".join('<a class="card" href="article.html">' + ph("Post image, 4:3", "Post image", ratio="4 / 3") + '<div class="meta"><span>Category</span><time>Publish date</time></div><h3>Related post title, up to two lines</h3><p>Two-line excerpt, cut off with an ellipsis after the second line so the cards stay the same height.</p></a>' for _ in range(3))}}
+    </div>
+  </div>
+</section>

@@ -1,0 +1,31 @@
+<!-- title: Page not found | Nandita Speaks | active: none-footer | page: 404 -->
+<style>
+  /* 404: a calm dead end that points back to the three pages organisers need. */
+  .nf { background: var(--ink); color: var(--ivory); }
+  .nf .wrap { padding-block: 120px 128px; display: grid; grid-template-columns: repeat(12, minmax(0,1fr)); column-gap: 24px; row-gap: 48px; align-items: center; }
+  .nf .t { grid-column: 1 / span 7; display: flex; flex-direction: column; gap: 28px; }
+  .nf .code { font-size: 13px; letter-spacing: .2em; text-transform: uppercase; font-weight: 600; color: var(--copper); }
+  .nf h1 { font-size: clamp(42px, 5.6vw, 84px); line-height: 1.02; }
+  .nf .mark { grid-column: 9 / -1; opacity: .9; }
+  .nf nav { display: flex; flex-direction: column; border-top: 1px solid var(--line-dark); max-width: 520px; }
+  .nf nav a { padding: 16px 0; border-bottom: 1px solid var(--line-dark); text-decoration: none; display: flex; justify-content: space-between; color: var(--muted-dark); }
+  .nf nav a:hover { color: var(--ivory); }
+  .nf nav a span { color: var(--copper); }
+  @media (max-width: 767px) { .nf .wrap { grid-template-columns: 1fr; padding-block: 64px 80px; } .nf .wrap > * { grid-column: 1 !important; } .nf .mark { max-width: 160px; order: -1; } }
+</style>
+<section class="nf" aria-labelledby="nf-h1">
+  <div class="wrap">
+    <div class="t load-in">
+      <p class="code">Error 404</p>
+      <h1 id="nf-h1">This page could not be found.</h1>
+      <p class="lede muted">The link may be old, or the address may have a typo.</p>
+      <nav aria-label="Helpful pages">
+        <a href="home.html">Home <span aria-hidden="true">&rarr;</span></a>
+        <a href="speaking.html">Speaking <span aria-hidden="true">&rarr;</span></a>
+        <a href="contact.html">Invite Nandita to Speak <span aria-hidden="true">&rarr;</span></a>
+      </nav>
+      <p class="note small"><b>Copy</b><span>404 wording is functional placeholder text for approval. The server returns a real 404 status, not the home page as the current site does.</span></p>
+    </div>
+    <img class="mark" src="../assets/mark-copper.png" alt="" width="949" height="569">
+  </div>
+</section>

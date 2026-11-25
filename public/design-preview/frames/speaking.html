@@ -1,0 +1,567 @@
+<!doctype html>
+<html lang="en-IN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Speaker for Women's Events | Keynotes by Nandita Thakur</title>
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Marcellus&family=Manrope:wght@400;500;600;700&display=swap">
+<style>
+/* Nandita Speaks — design frames v1 (for client approval)
+   Layout: 12-col editorial grid, 1440 frame, 64–80 side padding; black/ivory lead, copper as hairlines,
+   numerals and marks only. Single brand look by choice (the site itself is not theme-switching). */
+:root {
+  color-scheme: light;
+  /* Brand palette (brand board) */
+  --ink: #171717;          /* Soft Black — primary dark */
+  --ivory: #F4EFE7;        /* Warm Ivory — reading surface */
+  --copper: #B77B61;       /* Muted Copper — accent: rules, numerals, text on black only */
+  --stone: #D8CFC3;        /* Warm Stone — secondary surface */
+  /* Derived for contrast (proposed, needs approval) */
+  --ink-2: #222020;        /* raised panel on black */
+  --copper-deep: #7A4733;  /* copper for small text: 6.6:1 on ivory, 4.9:1 on stone */
+  --muted: #5A534B;        /* secondary text: 6.6:1 on ivory, 4.9:1 on stone */
+  --muted-dark: #B9B1A6;   /* secondary text on black: 8.5:1 */
+  --line: rgba(23, 23, 23, .16);
+  --line-dark: rgba(244, 239, 231, .16);
+  --error: #9B2C1F;
+
+  --display: "Marcellus", "Cormorant Garamond", Georgia, "Times New Roman", serif;
+  --sans: "Manrope", "Helvetica Neue", Arial, system-ui, sans-serif;
+
+  --max: 1440px;
+  --pad: 72px;
+  --section: 120px;
+  --measure: 700px;
+  --radius: 2px;
+  --header-h: 88px;
+}
+@media (max-width: 1023px) { :root { --pad: 32px; --section: 96px; } }
+@media (max-width: 767px)  { :root { --pad: 20px; --section: 64px; --header-h: 68px; } }
+
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0; background: var(--ivory); color: var(--ink);
+  font-family: var(--sans); font-size: 17px; line-height: 1.65; font-weight: 400;
+  -webkit-font-smoothing: antialiased;
+}
+@media (max-width: 767px) { body { font-size: 16px; } }
+img { max-width: 100%; height: auto; display: block; }
+a { color: inherit; }
+:focus-visible { outline: 2px solid var(--copper); outline-offset: 3px; }
+@media (prefers-reduced-motion: reduce) { *, *::before, *::after { transition: none !important; animation: none !important; } }
+
+/* ---------- Layout ---------- */
+.wrap {
+  max-width: var(--max); margin: 0 auto;
+  padding-left: max(var(--pad), env(safe-area-inset-left, 0px));
+  padding-right: max(var(--pad), env(safe-area-inset-right, 0px));
+}
+.band { padding-block: var(--section); }
+.band--tight { padding-block: calc(var(--section) * .66); }
+.on-ink { background: var(--ink); color: var(--ivory); }
+.on-stone { background: var(--stone); }
+.grid { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: 24px; }
+@media (max-width: 1023px) { .grid { column-gap: 20px; } }
+@media (max-width: 767px)  { .grid { grid-template-columns: minmax(0, 1fr); row-gap: 32px; } .grid > * { grid-column: 1 / -1 !important; } }
+.stack { display: flex; flex-direction: column; }
+.rule { height: 1px; background: var(--copper); border: 0; margin: 0; }
+
+/* ---------- Type ---------- */
+h1, h2, h3, .display { font-family: var(--display); font-weight: 400; margin: 0; text-wrap: balance; letter-spacing: -.005em; }
+.display { font-size: clamp(40px, 5.6vw, 80px); line-height: 1.04; }
+.page-title { font-size: clamp(34px, 4.4vw, 64px); line-height: 1.06; }
+h2, .h2 { font-size: clamp(29px, 3.2vw, 46px); line-height: 1.12; }
+h3, .h3 { font-size: clamp(22px, 2vw, 28px); line-height: 1.25; }
+p { margin: 0; }
+.lede { font-size: clamp(18px, 1.5vw, 20px); line-height: 1.6; max-width: 34em; }
+.small { font-size: 14px; line-height: 1.55; }
+.muted { color: var(--muted); }
+.on-ink .muted { color: var(--muted-dark); }
+.label {
+  font-family: var(--sans); font-size: 12px; font-weight: 600; letter-spacing: .16em; text-transform: uppercase;
+  color: var(--copper-deep); display: inline-flex; align-items: center; gap: 14px;
+}
+.label::before { content: ""; width: 28px; height: 1px; background: currentColor; }
+.on-ink .label { color: var(--copper); }
+.prose { max-width: var(--measure); display: flex; flex-direction: column; gap: 1.15em; }
+.prose p { font-size: 18px; line-height: 1.75; }
+@media (max-width: 767px) { .prose p { font-size: 17px; } }
+
+/* ---------- Buttons & links ---------- */
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+  min-height: 52px; padding: 0 26px; border-radius: var(--radius);
+  font: 500 15px/1 var(--sans); letter-spacing: .02em; text-decoration: none; white-space: nowrap;
+  background: var(--ink); color: var(--ivory); border: 1px solid var(--ink);
+  transition: background .22s ease, color .22s ease, border-color .22s ease;
+  cursor: pointer;
+}
+.btn:hover, .btn.is-hover { background: #2e2a27; border-color: #2e2a27; }
+.btn::after { content: ""; width: 18px; height: 1px; background: var(--copper); transition: width .22s ease; }
+.btn:hover::after, .btn.is-hover::after { width: 26px; }
+.btn--light { background: var(--ivory); color: var(--ink); border-color: var(--ivory); }
+.btn--light:hover, .btn--light.is-hover { background: #fff; border-color: #fff; }
+.btn--light::after { background: var(--copper-deep); }
+.btn--ghost { background: transparent; color: var(--ink); border-color: var(--ink); }
+.btn--ghost:hover, .btn--ghost.is-hover { background: var(--ink); color: var(--ivory); }
+.on-ink .btn--ghost { color: var(--ivory); border-color: rgba(244,239,231,.5); }
+.btn--sm { min-height: 44px; padding: 0 18px; font-size: 14px; }
+.btn--sm::after { display: none; }
+.btn[disabled], .btn.is-disabled { opacity: .45; cursor: not-allowed; }
+.btn.is-focus { outline: 2px solid var(--copper); outline-offset: 3px; }
+.link {
+  font: 500 15px/1.4 var(--sans); text-decoration: none; display: inline-flex; gap: 10px; align-items: center;
+  border-bottom: 1px solid var(--copper); padding-bottom: 4px;
+}
+.link:hover { border-bottom-color: currentColor; }
+.link span[aria-hidden] { transition: transform .22s ease; }
+.link:hover span[aria-hidden] { transform: translateX(4px); }
+.actions { display: flex; flex-wrap: wrap; gap: 20px 28px; align-items: center; }
+
+/* ---------- Header ---------- */
+body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 60; background: var(--ink); }
+.site-header { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 50; background: var(--ink); color: var(--ivory); border-bottom: 1px solid var(--line-dark); }
+.site-header .wrap { height: var(--header-h); display: flex; align-items: center; gap: 32px; }
+.brand { display: block; flex: none; }
+.brand img { height: 58px; width: auto; }
+@media (max-width: 767px) { .brand img { height: 46px; } }
+.nav { margin-left: auto; display: flex; gap: 30px; }
+.nav a { font: 500 14px/1 var(--sans); letter-spacing: .03em; text-decoration: none; color: var(--muted-dark); padding: 10px 0; border-bottom: 1px solid transparent; }
+.nav a:hover { color: var(--ivory); }
+.nav a[aria-current="page"] { color: var(--ivory); border-bottom-color: var(--copper); }
+.menu-btn {
+  display: none; width: 44px; height: 44px; border: 1px solid var(--line-dark); background: transparent; color: var(--ivory);
+  border-radius: var(--radius); align-items: center; justify-content: center; cursor: pointer; flex: none;
+}
+.menu-btn span { display: block; width: 18px; height: 1px; background: currentColor; box-shadow: 0 -6px 0 currentColor, 0 6px 0 currentColor; }
+@media (max-width: 1100px) { .nav { gap: 22px; } }
+@media (max-width: 1023px) {
+  .nav { display: none; }
+  .menu-btn { display: inline-flex; }
+  .site-header .header-cta { margin-left: auto; }
+}
+@media (max-width: 767px) { .site-header .wrap { gap: 12px; } .header-cta { padding: 0 14px !important; font-size: 13px !important; } }
+@media (max-width: 359px) { .header-cta { font-size: 12px !important; padding: 0 10px !important; } .brand img { height: 40px; } }
+.mobile-menu { position: fixed; inset: calc(var(--header-h) + env(safe-area-inset-top, 0px)) 0 0; background: var(--ink); color: var(--ivory); z-index: 49; overflow-y: auto; }
+.mobile-menu .wrap { padding-block: 32px 48px; display: flex; flex-direction: column; gap: 4px; }
+.mobile-menu a.m-link { font: 400 30px/1.2 var(--display); text-decoration: none; padding: 14px 0; border-bottom: 1px solid var(--line-dark); display: flex; justify-content: space-between; align-items: baseline; }
+.mobile-menu a.m-link[aria-current="page"] { color: var(--copper); }
+.mobile-menu a.m-link small { font: 500 12px/1 var(--sans); letter-spacing: .14em; color: var(--muted-dark); }
+
+/* ---------- Footer ---------- */
+.site-footer { background: var(--ink); color: var(--ivory); border-top: 1px solid var(--line-dark); }
+.site-footer .wrap { padding-block: 88px 40px; }
+.footer-top { display: grid; grid-template-columns: 1.1fr 1fr 1fr; gap: 48px; align-items: start; }
+.footer-top img { height: 104px; width: auto; }
+.footer-nav { display: grid; grid-template-columns: 1fr 1fr; gap: 12px 32px; }
+.footer-nav a { text-decoration: none; color: var(--muted-dark); font-size: 15px; }
+.footer-nav a:hover { color: var(--ivory); }
+.footer-bottom { margin-top: 72px; padding-top: 24px; border-top: 1px solid var(--line-dark); display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px 32px; font-size: 13px; color: var(--muted-dark); }
+.footer-bottom a { color: var(--muted-dark); }
+@media (max-width: 1023px) { .footer-top { grid-template-columns: 1fr 1fr; } .footer-top > :first-child { grid-column: 1 / -1; } }
+@media (max-width: 767px) { .footer-top { grid-template-columns: 1fr; } .site-footer .wrap { padding-block: 64px 32px; } .footer-top img { height: 84px; } }
+
+/* ---------- Photo slots (until client photographs arrive) ---------- */
+.ph {
+  position: relative; margin: 0; background: var(--stone); overflow: hidden; max-width: 100%;
+  display: flex; align-items: flex-end; isolation: isolate;
+}
+.ph::before { content: ""; position: absolute; inset: 14px; border: 1px solid rgba(122, 71, 51, .45); pointer-events: none; }
+.ph .ph-mark { position: absolute; left: 50%; top: 46%; width: 34%; max-width: 180px; transform: translate(-50%, -50%); opacity: .38; z-index: -1; }
+.ph figcaption { position: relative; padding: 28px 32px; font-size: 12px; line-height: 1.5; letter-spacing: .04em; color: var(--copper-deep); }
+.ph figcaption b { display: block; font-weight: 600; letter-spacing: .16em; text-transform: uppercase; margin-bottom: 4px; }
+.on-ink .ph, .ph--dark { background: var(--ink-2); }
+.on-ink .ph::before, .ph--dark::before { border-color: rgba(183, 123, 97, .45); }
+.on-ink .ph figcaption, .ph--dark figcaption { color: var(--copper); }
+.ph--video .play { position: absolute; left: 50%; top: 46%; transform: translate(-50%, -50%); width: 76px; height: 76px; border: 1px solid currentColor; border-radius: 50%; color: var(--copper); display: grid; place-items: center; }
+.ph--video .play::after { content: ""; border-left: 14px solid currentColor; border-top: 9px solid transparent; border-bottom: 9px solid transparent; margin-left: 4px; }
+
+/* ---------- Annotations (design notes; not part of the built site) ---------- */
+.note {
+  border: 1px dashed var(--copper-deep); border-radius: var(--radius); padding: 14px 18px;
+  font-size: 13px; line-height: 1.55; color: var(--copper-deep); background: rgba(183, 123, 97, .06);
+  display: flex; gap: 12px; align-items: baseline;
+}
+.note b { font-weight: 700; letter-spacing: .14em; text-transform: uppercase; font-size: 11px; white-space: nowrap; }
+.on-ink .note { color: var(--copper); border-color: var(--copper); background: rgba(183, 123, 97, .08); }
+.hidden-section { padding-block: 28px; background: repeating-linear-gradient(135deg, transparent 0 10px, rgba(122,71,51,.05) 10px 11px); border-block: 1px dashed rgba(122,71,51,.4); }
+
+/* ---------- FAQ ---------- */
+.faq { border-top: 1px solid var(--line); }
+.faq-item { border-bottom: 1px solid var(--line); }
+.faq-item h3 { font-size: clamp(20px, 1.7vw, 24px); }
+.faq-item button {
+  all: unset; box-sizing: border-box; width: 100%; cursor: pointer; display: flex; justify-content: space-between; align-items: center; gap: 24px;
+  padding: 26px 0; font: inherit; line-height: 1.3;
+}
+.faq-item button:focus-visible { outline: 2px solid var(--copper); outline-offset: 2px; }
+.faq-icon { flex: none; width: 32px; height: 32px; border: 1px solid var(--line); border-radius: 50%; position: relative; }
+.faq-icon::before, .faq-icon::after { content: ""; position: absolute; left: 50%; top: 50%; width: 12px; height: 1px; background: var(--copper-deep); transform: translate(-50%, -50%); transition: transform .25s ease; }
+.faq-icon::after { transform: translate(-50%, -50%) rotate(90deg); }
+.faq-item button[aria-expanded="true"] .faq-icon::after { transform: translate(-50%, -50%) rotate(0deg); }
+.faq-panel { padding: 0 64px 28px 0; max-width: 760px; color: var(--muted); }
+@media (max-width: 767px) { .faq-panel { padding-right: 0; } .faq-item button { padding: 22px 0; } }
+
+/* ---------- CTA band ---------- */
+.cta-band { background: var(--ink); color: var(--ivory); text-align: left; }
+.cta-band .wrap { padding-block: 112px; display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 40px 64px; align-items: end; }
+.cta-band .cta-mark { width: 120px; opacity: .9; margin-bottom: 28px; }
+@media (max-width: 767px) { .cta-band .wrap { grid-template-columns: 1fr; padding-block: 72px; } }
+
+/* ---------- Article cards ---------- */
+.cards { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 56px 32px; }
+@media (max-width: 1023px) { .cards { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 767px) { .cards { grid-template-columns: minmax(0, 1fr); gap: 44px; } }
+.card { display: flex; flex-direction: column; gap: 14px; text-decoration: none; min-width: 0; }
+.card .ph { aspect-ratio: 4 / 3; }
+.card .meta { display: flex; gap: 12px; font-size: 12px; letter-spacing: .14em; text-transform: uppercase; font-weight: 600; color: var(--copper-deep); }
+.card .meta time { color: var(--muted); font-weight: 500; }
+.card h3 { font-size: 24px; line-height: 1.25; }
+.card p { color: var(--muted); font-size: 15px; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+.card:hover h3 { text-decoration: underline; text-decoration-color: var(--copper); text-underline-offset: 6px; text-decoration-thickness: 1px; }
+
+/* ---------- Forms ---------- */
+.field { display: flex; flex-direction: column; gap: 8px; min-width: 0; }
+.field label { font-size: 14px; font-weight: 600; }
+.field label .opt { font-weight: 400; color: var(--muted); }
+.field input, .field textarea {
+  font: 400 16px/1.5 var(--sans); color: var(--ink); background: #FBF8F3; border: 1px solid rgba(23,23,23,.28);
+  border-radius: var(--radius); padding: 14px 16px; min-height: 52px; width: 100%;
+  transition: border-color .2s ease, box-shadow .2s ease;
+}
+.field textarea { min-height: 168px; resize: vertical; }
+.field input:focus, .field textarea:focus, .field .is-focus { outline: none; border-color: var(--ink); box-shadow: 0 0 0 3px rgba(183,123,97,.35); }
+.field.has-error input, .field.has-error textarea { border-color: var(--error); }
+.field .err { font-size: 13px; color: var(--error); display: flex; gap: 6px; }
+.field .hint { font-size: 13px; color: var(--muted); }
+.form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+.form-grid .full { grid-column: 1 / -1; }
+@media (max-width: 767px) { .form-grid { grid-template-columns: 1fr; } }
+.hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+
+/* ---------- v2 additions ---------- */
+/* Public view: hides every design note and every section kept off for visitors (frames load with #public) */
+html.is-public .note, html.is-public .hidden-section, html.is-public [data-preview-only] { display: none !important; }
+/* Pending inline copy, visible only in the private preview */
+.pending { background: rgba(183,123,97,.14); border-bottom: 1px dashed var(--copper-deep); padding: 0 4px; font-style: normal; color: var(--copper-deep); font-size: .82em; font-family: var(--sans); font-weight: 600; letter-spacing: .02em; }
+.on-ink .pending { color: var(--copper); border-color: var(--copper); }
+html.is-public .pending { display: none; }
+
+/* Section rule: a short copper stroke above a section heading */
+.sr { display: flex; flex-direction: column; gap: 22px; }
+.sr::before { content: ""; width: 44px; height: 1px; background: var(--copper); }
+
+/* Motion: load sequence for page heads, reveal for content below the fold (added by script only) */
+@keyframes rise { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: none; } }
+.load-in > * { animation: rise .6s cubic-bezier(.2,.7,.2,1) both; }
+.load-in > *:nth-child(2) { animation-delay: .06s; } .load-in > *:nth-child(3) { animation-delay: .12s; }
+.load-in > *:nth-child(4) { animation-delay: .18s; } .load-in > *:nth-child(5) { animation-delay: .24s; }
+.js-reveal .rv { opacity: 0; transform: translateY(14px); transition: opacity .4s ease, transform .4s cubic-bezier(.2,.7,.2,1); }
+.js-reveal .rv.in { opacity: 1; transform: none; }
+@media (prefers-reduced-motion: reduce) { .load-in > * { animation: none; } .js-reveal .rv { opacity: 1; transform: none; } }
+
+/* Definition list (quick facts, session details) */
+.facts { margin: 0; border-top: 1px solid var(--ink); }
+.facts > div { display: grid; grid-template-columns: minmax(120px, 1fr) minmax(0, 2fr); gap: 16px; padding: 16px 0; border-bottom: 1px solid var(--line); }
+.facts dt { font-size: 12px; letter-spacing: .14em; text-transform: uppercase; font-weight: 600; color: var(--copper-deep); padding-top: 4px; }
+.facts dd { margin: 0; }
+.on-ink .facts { border-color: var(--ivory); } .on-ink .facts > div { border-color: var(--line-dark); } .on-ink .facts dt { color: var(--copper); }
+
+/* Inline text link inside running copy */
+.prose a, .tl { text-decoration: underline; text-decoration-color: var(--copper); text-decoration-thickness: 1px; text-underline-offset: 5px; }
+.prose a:hover, .tl:hover { text-decoration-color: currentColor; }
+/* Touch targets and skip link */
+.footer-bottom a, .crumbs a { display: inline-block; padding-block: 12px; margin-block: -12px; }
+.skip { position: absolute; left: 12px; top: -100px; z-index: 100; background: var(--ivory); color: var(--ink); padding: 12px 18px; font-weight: 600; text-decoration: none; }
+.skip:focus { top: calc(12px + env(safe-area-inset-top, 0px)); }
+html.is-static .load-in > * { animation: none; }
+
+</style>
+</head>
+<body>
+
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="home.html" aria-label="Nandita Speaks — home"><img src="../assets/logo-ivory.png" alt="Nandita Speaks" width="1073" height="753"></a>
+    <nav class="nav" aria-label="Main"><a href="home.html">Home</a><a href="about.html">About</a><a href="speaking.html" aria-current="page">Speaking</a><a href="silent-screams.html">Silent Screams</a><a href="blog.html">Blog</a><a href="contact.html">Contact</a></nav>
+    <a class="btn btn--light btn--sm header-cta" href="contact.html" data-cta="header">Invite Nandita to Speak</a>
+    <button class="menu-btn" type="button" aria-expanded="false" aria-controls="mobile-menu" aria-label="Open menu"><span></span></button>
+  </div>
+</header>
+<div class="mobile-menu" id="mobile-menu" hidden>
+  <div class="wrap">
+    <nav aria-label="Mobile"><a class="m-link" href="home.html">Home<small>01</small></a><a class="m-link" href="about.html">About<small>02</small></a><a class="m-link" href="speaking.html" aria-current="page">Speaking<small>03</small></a><a class="m-link" href="silent-screams.html">Silent Screams<small>04</small></a><a class="m-link" href="blog.html">Blog<small>05</small></a><a class="m-link" href="contact.html">Contact<small>06</small></a></nav>
+  </div>
+</div>
+<main id="main" data-frame="Speaking">
+
+<style>
+  /* Speaking: the organiser's page. Structured like an event programme: index, sections, a bio to copy. */
+  .s-head { background: var(--ink); color: var(--ivory); }
+  .s-head .wrap { padding-block: 96px 0; }
+  .s-head-grid { display: grid; grid-template-columns: repeat(12, minmax(0,1fr)); column-gap: 24px; row-gap: 40px; }
+  .s-head .t { grid-column: 1 / span 8; display: flex; flex-direction: column; gap: 28px; padding-bottom: 88px; }
+  .s-head h1 { font-size: clamp(40px, 5.4vw, 80px); line-height: 1.02; letter-spacing: -.01em; max-width: 11em; }
+  .s-head .lede { color: var(--muted-dark); max-width: 36em; }
+  .index { grid-column: 10 / -1; align-self: end; padding-bottom: 88px; }
+  .index p { font-size: 12px; letter-spacing: .16em; text-transform: uppercase; font-weight: 600; color: var(--copper); margin-bottom: 12px; }
+  .index ol { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--line-dark); counter-reset: i; }
+  .index li { counter-increment: i; border-bottom: 1px solid var(--line-dark); }
+  .index a { display: grid; grid-template-columns: 32px 1fr; padding: 13px 0; text-decoration: none; font-size: 15px; color: var(--muted-dark); }
+  .index a::before { content: counter(i, decimal-leading-zero); color: var(--copper); font-size: 12px; padding-top: 3px; }
+  .index a:hover { color: var(--ivory); }
+  @media (max-width: 1023px) { .s-head .t { grid-column: 1 / -1; padding-bottom: 0; } .index { grid-column: 1 / span 8; padding-bottom: 72px; } }
+  @media (max-width: 767px) { .s-head .wrap { padding-block: 48px 0; } .s-head-grid { grid-template-columns: 1fr; } .s-head-grid > * { grid-column: 1 !important; } .index { padding-bottom: 56px; } }
+
+  .who { display: grid; grid-template-columns: repeat(12, minmax(0,1fr)); column-gap: 24px; }
+  .who > h2 { grid-column: 1 / -1; margin-bottom: 56px; }
+  .aud-row { grid-column: 1 / -1; display: grid; grid-template-columns: repeat(12, minmax(0,1fr)); column-gap: 24px; padding-block: 48px 56px; border-top: 1px solid var(--ink); scroll-margin-top: calc(var(--header-h) + 24px); }
+  .aud-row + .aud-row { border-top-color: var(--line); }
+  .aud-row h3 { grid-column: 1 / span 4; font-size: clamp(24px, 2.3vw, 32px); }
+  .aud-row .body { grid-column: 6 / span 6; display: flex; flex-direction: column; gap: 18px; }
+  .aud-row .body p:first-child { font-size: 20px; line-height: 1.6; }
+  .aud-row .body p + p { color: var(--muted); }
+  @media (max-width: 767px) { .who, .aud-row { grid-template-columns: 1fr; row-gap: 18px; } .who > *, .aud-row > * { grid-column: 1 !important; } .who > h2 { margin-bottom: 24px; } .aud-row { padding-block: 32px 40px; } }
+
+  .t-table { border-top: 1px solid var(--ink); margin-top: 48px; }
+  .t-row { display: grid; grid-template-columns: 80px minmax(0, 4fr) minmax(0, 6fr); gap: 24px; padding: 30px 0; border-bottom: 1px solid rgba(23,23,23,.2); align-items: baseline; }
+  .t-row .n { font-family: var(--display); font-size: 30px; color: var(--copper-deep); }
+  .t-row p { color: var(--muted); }
+  @media (max-width: 767px) { .t-row { grid-template-columns: 40px minmax(0,1fr); gap: 10px 14px; } .t-row .n { font-size: 22px; } .t-row p { grid-column: 2; } }
+
+  .talks-head { display: grid; grid-template-columns: repeat(12, minmax(0,1fr)); column-gap: 24px; row-gap: 20px; align-items: end; margin-bottom: 56px; }
+  .talks-head h2 { grid-column: 1 / span 6; }
+  .talks-head p { grid-column: 8 / -1; color: var(--muted-dark); }
+  .talk { display: grid; grid-template-columns: repeat(12, minmax(0,1fr)); column-gap: 24px; row-gap: 20px; padding-block: 48px; border-top: 1px solid var(--line-dark); }
+  .talk:first-of-type { border-top-color: var(--ivory); }
+  .talk h3 { grid-column: 1 / span 5; font-size: clamp(26px, 2.6vw, 38px); line-height: 1.15; }
+  .talk .desc { grid-column: 6 / span 4; color: var(--muted-dark); font-size: 16px; }
+  .talk .qs { grid-column: 10 / -1; }
+  .talk .qs p { font-size: 11px; letter-spacing: .16em; text-transform: uppercase; font-weight: 600; color: var(--copper); margin-bottom: 12px; }
+  .talk ul { margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 12px; }
+  .talk li { font-size: 15px; line-height: 1.5; padding-left: 18px; position: relative; }
+  .talk li::before { content: ""; position: absolute; left: 0; top: .72em; width: 9px; height: 1px; background: var(--copper); }
+  @media (max-width: 1023px) { .talk h3 { grid-column: 1 / -1; } .talk .desc { grid-column: 1 / span 7; } .talk .qs { grid-column: 8 / -1; } }
+  @media (max-width: 767px) { .talks-head, .talk { grid-template-columns: 1fr; } .talks-head > *, .talk > * { grid-column: 1 !important; } .talk { padding-block: 36px; } }
+
+  .bio { display: grid; grid-template-columns: repeat(12, minmax(0,1fr)); column-gap: 24px; row-gap: 32px; align-items: start; }
+  .bio .h { grid-column: 1 / span 4; display: flex; flex-direction: column; gap: 18px; }
+  .bio .card-bio { grid-column: 6 / -1; background: var(--ivory); padding: 44px 48px; border-top: 2px solid var(--ink); }
+  .bio .card-bio p.txt { font-family: var(--display); font-size: clamp(20px, 1.8vw, 25px); line-height: 1.5; }
+  .bio .tools { display: flex; flex-wrap: wrap; gap: 16px 24px; align-items: center; margin-top: 28px; padding-top: 20px; border-top: 1px solid var(--line); }
+  @media (max-width: 767px) { .bio { grid-template-columns: 1fr; } .bio > * { grid-column: 1 !important; } .bio .card-bio { padding: 28px 22px; } }
+
+  .spoken { display: grid; grid-template-columns: repeat(12, minmax(0,1fr)); column-gap: 24px; row-gap: 16px; align-items: baseline; }
+  .spoken h2 { grid-column: 1 / span 4; font-size: clamp(24px, 2vw, 30px); }
+  .spoken .stmt { grid-column: 6 / -1; font-family: var(--display); font-size: clamp(26px, 2.8vw, 40px); line-height: 1.2; }
+  @media (max-width: 767px) { .spoken { grid-template-columns: 1fr; } .spoken > * { grid-column: 1 !important; } }
+
+  .faq-grid { display: grid; grid-template-columns: repeat(12, minmax(0,1fr)); column-gap: 24px; row-gap: 32px; }
+  .faq-grid .faq-head { grid-column: 1 / span 4; } .faq-grid .faq-body { grid-column: 6 / -1; }
+  @media (max-width: 767px) { .faq-grid { grid-template-columns: 1fr; } .faq-grid > * { grid-column: 1 !important; } }
+</style>
+
+<section class="s-head" aria-labelledby="sp-h1">
+  <div class="wrap">
+    <div class="s-head-grid">
+      <div class="t load-in">
+        <h1 id="sp-h1">Keynotes and Talks for Women&rsquo;s Events</h1>
+        <p class="lede">I speak at women&rsquo;s events, community gatherings and company sessions about rebuilding self-belief after life&rsquo;s setbacks. My talks come from my own experience, told honestly, with a few questions for the audience to take home.</p>
+        <div class="actions"><a class="btn btn--light" href="contact.html">Invite Nandita to Speak</a></div>
+      </div>
+      <nav class="index" aria-label="On this page">
+        <p>On this page</p>
+        <ol>
+          <li><a href="#women">Women&rsquo;s communities and events</a></li>
+          <li><a href="#companies">Companies and teams</a></li>
+          <li><a href="#themes">What I speak about</a></li>
+          <li data-preview-only><a href="#talks">Talk ideas</a></li>
+          <li><a href="#bio">Bio for your programme</a></li>
+          <li><a href="#faq">Questions organisers ask</a></li>
+        </ol>
+      </nav>
+    </div>
+  </div>
+</section>
+
+<section class="band" aria-labelledby="who-h">
+  <div class="wrap who">
+    <h2 id="who-h" class="sr">Who I speak to</h2>
+    <div class="aud-row" id="women">
+      <h3>For women&rsquo;s communities and events</h3>
+      <div class="body">
+        <p>I speak at International Women&rsquo;s Day sessions, women&rsquo;s network meetings, association and community gatherings, and conferences for women. <span class="pending">confirm event types with Nandita</span></p>
+        <p>Some of the women in the room will have been through a major setback. Others will have spent years meeting everyone else&rsquo;s expectations and slowly lost confidence in themselves. My life will not match every woman&rsquo;s, and I do not tell anyone what to decide. I share what happened to me and ask questions.</p>
+      </div>
+    </div>
+    <div class="aud-row" id="companies">
+      <h3>For companies and teams</h3>
+      <div class="body">
+        <p>I also speak to teams and middle managers about rebuilding self-belief after a setback, making your own decisions and keeping a life of your own outside work. The audience can be women only or a mixed group. These are talks that start a conversation. I do not run a leadership programme.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="band on-stone" id="themes" aria-labelledby="th-h">
+  <div class="wrap">
+    <h2 id="th-h" class="sr">What I speak about</h2>
+    <div class="t-table">
+      <div class="t-row"><span class="n" aria-hidden="true">01</span><h3>Believing in yourself again</h3><p>Confidence can drop after a major setback, or fade slowly over years of putting other people first. I talk about how that happens and what a first step back can look like.</p></div>
+      <div class="t-row"><span class="n" aria-hidden="true">02</span><h3>Having an identity of your own</h3><p>Family and work can take over every hour of the day. I talk about keeping a few interests that belong only to you, and why they matter.</p></div>
+      <div class="t-row"><span class="n" aria-hidden="true">03</span><h3>Building independence</h3><p>Earning my own money gave me the freedom to make my own decisions. I share what that was like for me. It is my own experience and not financial advice.</p></div>
+      <div class="t-row"><span class="n" aria-hidden="true">04</span><h3>Living through uncertainty</h3><p>I looked after both my parents through cancer and then had cancer myself. I talk about what it is like when plans change and what I did next.</p></div>
+      <div class="t-row"><span class="n" aria-hidden="true">05</span><h3>Finding enjoyment again</h3><p>I kept singing through chemotherapy. I talk about making room for music, laughter and ordinary pleasures even when life is hard.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="band on-ink" id="talks" aria-labelledby="tk-h" data-preview-only>
+  <div class="wrap">
+    <div class="talks-head">
+      <h2 id="tk-h" class="sr">Talk ideas for your event</h2>
+      <p>Each talk can be a keynote or a shorter session. <span class="pending">confirm lengths</span></p>
+    </div>
+    <p class="note small" style="margin-bottom:40px"><b>Not public yet</b><span>The three talk titles are proposals for Nandita to review. This whole section stays hidden until she approves them.</span></p>
+    <article class="talk">
+      <h3>What Do I Do With My Life Now?</h3>
+      <p class="desc">Many women reach a point where they are no longer sure what they want or what they can do. It can come after a major setback or after years of meeting everyone else&rsquo;s expectations. In this talk I share how I had to rebuild parts of my own life more than once, and what I did next.</p>
+      <div class="qs"><p>Questions the audience takes home</p><ul><li>What has happened to my belief in myself?</li><li>What is one decision I can begin making for myself?</li><li>What is a next step that feels manageable?</li></ul></div>
+    </article>
+    <article class="talk">
+      <h3>Silent Screams: The Courage to Reclaim Your Life</h3>
+      <p class="desc">This talk draws on the themes of my book, <i>Silent Screams</i>: independence, having an identity of your own and making your own decisions. I talk about earning my own money, what that changed for me and why I value a life of my own alongside family responsibilities.</p>
+      <div class="qs"><p>Questions the audience takes home</p><ul><li>What would help me feel more independent?</li><li>Which interest have I stopped making time for?</li></ul></div>
+    </article>
+    <article class="talk">
+      <h3>Still Singing: Keeping Something of Your Own When Life Gets Hard</h3>
+      <p class="desc">I carried on with my music classes and kept singing through chemotherapy. This talk uses that experience to talk about living through uncertainty, keeping a little room for what you enjoy and finding something to laugh about when things go wrong.</p>
+      <div class="qs"><p>Questions the audience takes home</p><ul><li>What is only mine, and how could I make room for it in a hard stretch?</li><li>People cope in different ways, so what works for me?</li></ul></div>
+    </article>
+    <p class="lede" style="margin-top:40px;color:var(--muted-dark);max-width:36em">Any of these can be shaped to your audience and event. Tell me what you have in mind and we can talk it through. <span class="pending">confirm with Nandita</span></p>
+  </div>
+</section>
+
+<div class="hidden-section"><div class="wrap"><p class="note"><b>Hidden section</b><span>Session details: length, format (in person, online or both), languages, where Nandita is based and travels, time for audience questions. Shown as a five-row list once every detail is confirmed.</span></p></div></div>
+
+<section class="band on-stone" id="bio" aria-labelledby="bio-h">
+  <div class="wrap bio">
+    <div class="h">
+      <h2 id="bio-h" class="sr">Bio for your event programme</h2>
+      <p class="muted">Please use this short bio in your programme or event listing.</p>
+      <p class="note small"><b>Approval</b><span>Nandita approves the bio wording before it goes live. The high-resolution photo link stays hidden until photos are supplied.</span></p>
+    </div>
+    <div class="card-bio">
+      <p class="txt" id="bio-text">Nandita Thakur is a motivational speaker for women, an entrepreneur and the author of <i>Silent Screams</i>. She speaks about rebuilding belief in yourself after life&rsquo;s setbacks, drawing on her own experience of building a working life of her own, caring for her parents through cancer and keeping up her music while she was in treatment herself.</p>
+      <div class="tools">
+        <button class="btn btn--ghost btn--sm" type="button" id="copy-bio">Copy bio</button>
+        <span class="small muted" id="copy-status" role="status"></span>
+        <span class="pending" data-preview-only>Download high-resolution photos</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="band" aria-labelledby="spoken-h">
+  <div class="wrap spoken">
+    <h2 id="spoken-h">Where I have spoken</h2>
+    <p class="stmt">I have spoken at sessions for cancer patients.</p>
+  </div>
+</section>
+
+<section class="band on-stone" id="faq" aria-labelledby="faq-h">
+  <div class="wrap faq-grid">
+    <div class="faq-head sr"><h2 id="faq-h">Questions organisers ask</h2></div>
+    <div class="faq-body">
+      <div class="faq"><div class="faq-item"><h3><button type="button" aria-expanded="true" aria-controls="sfaq-1" id="sfaq-1-q"><span>What does Nandita speak about at women&rsquo;s events?</span><span class="faq-icon" aria-hidden="true"></span></button></h3><div class="faq-panel" id="sfaq-1" role="region" aria-labelledby="sfaq-1-q"><p>She speaks about rebuilding belief in yourself after life&rsquo;s setbacks, and about having an identity of your own, building independence, living through uncertainty and finding enjoyment again. She talks from her own experience and leaves the audience with a few questions to think about.</p></div></div><div class="faq-item"><h3><button type="button" aria-expanded="false" aria-controls="sfaq-2" id="sfaq-2-q"><span>Does Nandita speak at company events?</span><span class="faq-icon" aria-hidden="true"></span></button></h3><div class="faq-panel" id="sfaq-2" role="region" aria-labelledby="sfaq-2-q" hidden><p>Yes. She speaks at events organised for women inside companies, and to teams and middle managers about self-belief and keeping a life of your own outside work. The audience can be women only or a mixed group.</p></div></div><div class="faq-item"><h3><button type="button" aria-expanded="false" aria-controls="sfaq-3" id="sfaq-3-q"><span>What will the audience take away?</span><span class="faq-icon" aria-hidden="true"></span></button></h3><div class="faq-panel" id="sfaq-3" role="region" aria-labelledby="sfaq-3-q" hidden><p>A few questions to think about, such as which decision they could start making for themselves and what next step feels manageable. Nandita shares her own experience. She is not a therapist or a financial adviser, and her talks do not promise a particular result.</p></div></div><div class="faq-item"><h3><button type="button" aria-expanded="false" aria-controls="sfaq-4" id="sfaq-4-q"><span>What should I include in my enquiry?</span><span class="faq-icon" aria-hidden="true"></span></button></h3><div class="faq-panel" id="sfaq-4" role="region" aria-labelledby="sfaq-4-q" hidden><p>The date or approximate timing, the audience and its size, the location or whether it is online, and what you have in mind. You do not need to book a call first.</p></div></div></div>
+      <p class="note small" style="margin-top:24px"><b>Later</b><span>Shaping the talk, format, length, fees and workshops are added once Nandita confirms the draft answers.</span></p>
+    </div>
+  </div>
+</section>
+
+
+<section class="cta-band" aria-labelledby="cta-h">
+  <div class="wrap">
+    <div class="stack" style="gap:22px">
+      <img class="cta-mark" src="../assets/mark-copper.png" alt="" width="949" height="569" style="margin-bottom:6px">
+      <h2 id="cta-h" class="page-title" style="max-width:12em">Invite Nandita to speak</h2>
+      <p class="lede muted" style="max-width:30em">Tell me the date, the audience and what you have in mind.</p><p class="pending" style="align-self:flex-start">+ reply time &middot; + speaker profile PDF link</p>
+    </div>
+    <a class="btn btn--light" href="contact.html" data-cta="band">Invite Nandita to Speak</a>
+  </div>
+</section>
+
+<script>
+  (function () {
+    var b = document.getElementById('copy-bio'), s = document.getElementById('copy-status');
+    if (!b) return;
+    b.addEventListener('click', function () {
+      var t = document.getElementById('bio-text').innerText;
+      var done = function () { s.textContent = 'Bio copied.'; };
+      var fallback = function () { var r = document.createRange(); r.selectNodeContents(document.getElementById('bio-text')); var sel = getSelection(); sel.removeAllRanges(); sel.addRange(r); s.textContent = 'Bio selected. Press Ctrl+C or Cmd+C to copy.'; };
+      if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(t).then(done, fallback); else fallback();
+    });
+  })();
+</script>
+
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-top">
+      <div class="stack" style="gap:28px">
+        <img src="../assets/logo-ivory.png" alt="Nandita Speaks" width="1073" height="753" style="align-self:flex-start">
+        <p class="muted" style="max-width:26em;color:var(--muted-dark)">Nandita Thakur speaks to women about rebuilding self-belief after life&rsquo;s setbacks.</p>
+      </div>
+      <nav class="footer-nav" aria-label="Footer"><a href="home.html">Home</a><a href="about.html">About</a><a href="speaking.html" aria-current="page">Speaking</a><a href="silent-screams.html">Silent Screams</a><a href="blog.html">Blog</a><a href="contact.html">Contact</a><a href="privacy-policy.html">Privacy Policy</a></nav>
+      <div class="stack" style="gap:20px;align-items:flex-start">
+        <p class="label">Speaking enquiries</p>
+        <a class="btn btn--light" href="contact.html" data-cta="footer">Invite Nandita to Speak</a>
+        <p class="note small"><b>Hidden</b><span>Enquiry email and social links appear here once the client confirms them.</span></p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; <span data-year>2026</span> Nandita Thakur. All rights reserved.</span>
+      <a href="privacy-policy.html">Privacy Policy</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function () {
+  // Preview modes: #public hides notes and hidden sections; #static turns off reveal motion (for Figma import)
+  function mode() { var r = document.documentElement; r.classList.toggle('is-public', /public/.test(location.hash)); r.classList.toggle('is-static', /static/.test(location.hash)); }
+  mode(); window.addEventListener('hashchange', mode);
+  var still = /static/.test(location.hash) || window.matchMedia('(prefers-reduced-motion: reduce)').matches || window.self !== window.top;
+  if (!still && 'IntersectionObserver' in window) {
+    var els = [].slice.call(document.querySelectorAll('main section, main .reveal'));
+    var vh = window.innerHeight;
+    var io = new IntersectionObserver(function (es) { es.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }); }, { rootMargin: '0px 0px -8% 0px' });
+    els.forEach(function (el) { if (el.getBoundingClientRect().top > vh) { el.classList.add('rv'); io.observe(el); } });
+    document.documentElement.classList.add('js-reveal');
+  }
+  var y = document.querySelectorAll('[data-year]'); for (var i = 0; i < y.length; i++) y[i].textContent = new Date().getFullYear();
+  // Mobile menu: toggle, Escape to close, focus restoration
+  var btn = document.querySelector('.menu-btn'), menu = document.getElementById('mobile-menu');
+  function setMenu(open) {
+    if (!btn || !menu) return;
+    btn.setAttribute('aria-expanded', String(open)); btn.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+    menu.hidden = !open; document.body.style.overflow = open ? 'hidden' : '';
+    if (open) { var f = menu.querySelector('a'); f && f.focus(); } else { btn.focus(); }
+  }
+  btn && btn.addEventListener('click', function () { setMenu(btn.getAttribute('aria-expanded') !== 'true'); });
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && btn && btn.getAttribute('aria-expanded') === 'true') setMenu(false); });
+  // FAQ accordion: buttons inside H3, aria-expanded + controlled panel
+  var qs = document.querySelectorAll('.faq-item button');
+  for (var j = 0; j < qs.length; j++) qs[j].addEventListener('click', function () {
+    var open = this.getAttribute('aria-expanded') === 'true';
+    this.setAttribute('aria-expanded', String(!open));
+    document.getElementById(this.getAttribute('aria-controls')).hidden = open;
+  });
+})();
+</script>
+</body>
+</html>

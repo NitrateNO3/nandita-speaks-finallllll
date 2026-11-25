@@ -1,0 +1,75 @@
+<!-- title: Invite Nandita Thakur to Speak | Contact | active: contact | page: Contact -->
+<style>
+  /* Contact: a working page. Split screen, the invitation on black, the form on ivory. */
+  .c-split { display: grid; grid-template-columns: 5fr 7fr; min-height: 0; }
+  .c-side { background: var(--ink); color: var(--ivory); padding: 96px 72px 96px max(var(--pad), env(safe-area-inset-left, 0px)); display: flex; flex-direction: column; gap: 32px; }
+  .c-side h1 { font-size: clamp(40px, 4.6vw, 68px); line-height: 1.02; letter-spacing: -.01em; }
+  .c-side .lede { color: var(--muted-dark); }
+  .c-side .inc { margin-top: auto; padding-top: 32px; border-top: 1px solid var(--line-dark); }
+  .c-side .inc h2 { font-family: var(--sans); font-size: 12px; letter-spacing: .16em; text-transform: uppercase; font-weight: 600; color: var(--copper); margin-bottom: 16px; }
+  .c-side ul { margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 10px; }
+  .c-side li { padding-left: 20px; position: relative; color: var(--muted-dark); font-size: 15px; }
+  .c-side li::before { content: ""; position: absolute; left: 0; top: .78em; width: 10px; height: 1px; background: var(--copper); }
+  .c-main { padding: 96px max(var(--pad), env(safe-area-inset-right, 0px)) 96px 72px; display: flex; flex-direction: column; gap: 40px; max-width: 900px; }
+  .form-foot { display: flex; flex-wrap: wrap; align-items: center; gap: 20px 32px; margin-top: 8px; }
+  .details { border-top: 1px solid var(--ink); padding-top: 28px; display: flex; flex-direction: column; gap: 14px; }
+  .thanks { background: var(--ink); color: var(--ivory); padding: 48px; display: flex; flex-direction: column; gap: 18px; }
+  @media (max-width: 1023px) { .c-split { grid-template-columns: 1fr; } .c-side { padding: 72px max(var(--pad), env(safe-area-inset-right, 0px)) 56px max(var(--pad), env(safe-area-inset-left, 0px)); } .c-side .inc { margin-top: 0; } .c-main { padding: 64px max(var(--pad), env(safe-area-inset-right, 0px)) 88px max(var(--pad), env(safe-area-inset-left, 0px)); max-width: none; } }
+  @media (max-width: 767px) { .c-side { padding-top: 48px; gap: 24px; } .c-main { padding-top: 48px; } .thanks { padding: 32px 24px; } }
+</style>
+
+<div class="c-split">
+  <section class="c-side" aria-labelledby="ct-h1">
+    <div class="stack load-in" style="gap:28px">
+      <h1 id="ct-h1">Invite Nandita to speak</h1>
+      <p class="lede">Planning an event for women, or a session for your team? Tell me the date, the audience and what you have in mind. You do not need to book a call first.</p>
+      <p class="note small"><b>Copy</b><span>Contact page copy is not supplied yet. These lines reuse approved sentences from the Home page and FAQ.</span></p>
+    </div>
+    <div class="inc">
+      <h2>Helpful to include</h2>
+      <ul><li>The date or approximate timing</li><li>The audience and its size</li><li>The location, or whether it is online</li><li>What you have in mind</li></ul>
+    </div>
+  </section>
+
+  <section class="c-main" aria-label="Speaking enquiry form">
+    <form id="enquiry" novalidate>
+      <div class="form-grid">
+        <div class="field"><label for="f-name">Name</label><input id="f-name" name="name" autocomplete="name" required aria-required="true"></div>
+        <div class="field"><label for="f-org">Organisation or community <span class="opt">(optional)</span></label><input id="f-org" name="organisation" autocomplete="organization"></div>
+        <div class="field full"><label for="f-email">Email</label><input id="f-email" name="email" type="email" autocomplete="email" required aria-required="true"></div>
+        <div class="field"><label for="f-when">Event date or approximate timing <span class="opt">(optional)</span></label><input id="f-when" name="timing"></div>
+        <div class="field"><label for="f-where">Location, or online <span class="opt">(optional)</span></label><input id="f-where" name="location"></div>
+        <div class="field full"><label for="f-aud">Audience and approximate size <span class="opt">(optional)</span></label><input id="f-aud" name="audience"></div>
+        <div class="field full"><label for="f-note">A brief note about what you need</label><textarea id="f-note" name="message" required aria-required="true" maxlength="2000" aria-describedby="f-note-hint"></textarea><span class="hint" id="f-note-hint">Up to 2,000 characters.</span></div>
+        <div class="hp" aria-hidden="true"><label for="f-web">Leave this empty</label><input id="f-web" name="website" tabindex="-1" autocomplete="off"></div>
+      </div>
+      <div class="form-foot" style="margin-top:28px">
+        <button class="btn" type="submit">Send Enquiry</button>
+        <p class="small muted">Read how your details are used in the <a class="tl" href="privacy-policy.html">Privacy Policy</a>.</p>
+      </div>
+    </form>
+    <div class="details" data-preview-only>
+      <h2 class="h3">Contact details</h2>
+      <p class="note small"><b>Hidden</b><span>Enquiry email, plus phone and location only if Nandita wants them shown, and social links. Each line appears once confirmed.</span></p>
+    </div>
+  </section>
+</div>
+<script>
+  // Preview only: shows the error and thank-you states. The production form posts to the enquiry API.
+  (function () {
+    var f = document.getElementById('enquiry'); if (!f) return;
+    f.addEventListener('submit', function (e) {
+      e.preventDefault();
+      var bad = null;
+      f.querySelectorAll('.field').forEach(function (fl) { fl.classList.remove('has-error'); var er = fl.querySelector('.err'); er && er.remove(); });
+      [['f-name', 'Enter your name.'], ['f-email', 'Enter an email address, like name@example.com.'], ['f-note', 'Add a short note about what you need.']].forEach(function (r) {
+        var el = document.getElementById(r[0]); var v = el.value.trim();
+        var invalid = !v || (r[0] === 'f-email' && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v));
+        if (invalid) { var fl = el.closest('.field'); fl.classList.add('has-error'); var s = document.createElement('span'); s.className = 'err'; s.id = r[0] + '-err'; s.textContent = r[1]; fl.appendChild(s); el.setAttribute('aria-invalid', 'true'); el.setAttribute('aria-describedby', s.id); bad = bad || el; } else { el.removeAttribute('aria-invalid'); }
+      });
+      if (bad) { bad.focus(); return; }
+      f.outerHTML = '<div class="thanks" role="status" tabindex="-1" id="thanks"><h2 class="h3">Thank you. Your enquiry has been sent.</h2><p class="muted">A confirmation is on its way to your email.</p><p class="pending">+ reply time, once confirmed</p></div>';
+      document.getElementById('thanks').focus();
+    });
+  })();
+</script>

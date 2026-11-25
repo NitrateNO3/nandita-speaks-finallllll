@@ -1,0 +1,31 @@
+<!-- title: Privacy Policy | Nandita Speaks | active: none-footer | page: Privacy Policy -->
+<style>
+  .pp-head .wrap { padding-block: 96px 48px; }
+  .pp { display: grid; grid-template-columns: repeat(12, minmax(0,1fr)); column-gap: 24px; border-top: 1px solid var(--ink); padding-top: 48px; }
+  .pp nav { grid-column: 1 / span 3; display: flex; flex-direction: column; gap: 12px; font-size: 14px; position: sticky; top: calc(var(--header-h) + 32px); align-self: start; }
+  .pp nav a { text-decoration: none; color: var(--muted); }
+  .pp .prose { grid-column: 5 / span 7; }
+  .skel { height: 12px; background: var(--stone); border-radius: 1px; }
+  @media (max-width: 767px) { .pp { grid-template-columns: 1fr; row-gap: 32px; } .pp > * { grid-column: 1 / -1 !important; } .pp nav { position: static; } }
+</style>
+<section class="pp-head" aria-labelledby="pp-h1">
+  <div class="wrap stack" style="gap:20px">
+    <p class="label">Legal</p>
+    <h1 id="pp-h1" class="page-title">Privacy Policy</h1>
+    <p class="muted small">Last updated: date set in the CMS</p>
+  </div>
+</section>
+<section style="padding-bottom:var(--section)">
+  <div class="wrap">
+    <div class="pp">
+      <nav aria-label="Sections"><span class="label" style="margin-bottom:8px">On this page</span><div class="skel" style="width:80%"></div><div class="skel" style="width:64%"></div><div class="skel" style="width:72%"></div></nav>
+      <div class="prose" id="s1">
+        <p class="note"><b>Pending</b><span>Policy text is to be supplied by the client. This frame shows the layout only: H2 per section, 700 px reading width, a sticky section list on desktop. Linked from the footer and the contact form.</span></p>
+        <h2 class="h3" style="margin-top:16px">Section heading (H2)</h2>
+        <div class="skel" style="width:100%"></div><div class="skel" style="width:96%"></div><div class="skel" style="width:88%"></div><div class="skel" style="width:60%"></div>
+        <h2 class="h3" style="margin-top:16px">Section heading (H2)</h2>
+        <div class="skel" style="width:100%"></div><div class="skel" style="width:92%"></div><div class="skel" style="width:74%"></div>
+      </div>
+    </div>
+  </div>
+</section>

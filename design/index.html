@@ -1,0 +1,155 @@
+<title>Nandita Speaks Design Review</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Marcellus&family=Manrope:wght@400;500;600;700&display=swap">
+<style>
+  /* Review board: one row per route, 1440 desktop frame beside 390 mobile frame. Brand look only (single theme by choice). */
+  :root {
+    color-scheme: light;
+    --ink: #171717; --ivory: #F4EFE7; --copper: #B77B61; --stone: #D8CFC3;
+    --copper-deep: #7A4733; --muted: #5A534B; --muted-dark: #B9B1A6; --line: rgba(23,23,23,.16); --line-dark: rgba(244,239,231,.16);
+    --display: "Marcellus", Georgia, "Times New Roman", serif;
+    --sans: "Manrope", "Helvetica Neue", Arial, system-ui, sans-serif;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--ivory); color: var(--ink); font: 400 16px/1.6 var(--sans); -webkit-font-smoothing: antialiased; }
+  a { color: inherit; }
+  :focus-visible { outline: 2px solid var(--copper); outline-offset: 3px; }
+  .wrap { max-width: 1320px; margin: 0 auto; padding-left: max(24px, env(safe-area-inset-left, 0px)); padding-right: max(24px, env(safe-area-inset-right, 0px)); }
+  h1, h2, h3 { font-family: var(--display); font-weight: 400; margin: 0; text-wrap: balance; }
+  p { margin: 0; }
+  .label { font-size: 12px; font-weight: 600; letter-spacing: .16em; text-transform: uppercase; color: var(--copper-deep); }
+  .top { background: var(--ink); color: var(--ivory); margin-top: calc(-1 * env(safe-area-inset-top, 0px)); padding-top: env(safe-area-inset-top, 0px); }
+  .top .wrap { padding-block: 56px 48px; display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 32px; align-items: end; }
+  .top img { height: 110px; width: auto; display: block; }
+  .top h1 { font-size: clamp(36px, 5vw, 64px); line-height: 1.05; margin-top: 14px; }
+  .top p.sub { color: var(--muted-dark); max-width: 46em; margin-top: 18px; font-size: 17px; }
+  .top .label { color: var(--copper); }
+  @media (max-width: 700px) { .top .wrap { grid-template-columns: 1fr; } .top img { height: 80px; order: -1; } }
+
+  .summary { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0; border-top: 1px solid var(--ink); margin-top: 56px; }
+  .summary > div { padding: 28px 28px 28px 0; display: flex; flex-direction: column; gap: 10px; min-width: 0; }
+  .summary > div + div { padding-left: 28px; border-left: 1px solid var(--line); }
+  .summary h2 { font-size: 22px; }
+  .summary ul { margin: 0; padding-left: 1.1em; color: var(--muted); font-size: 15px; display: flex; flex-direction: column; gap: 6px; }
+  @media (max-width: 900px) { .summary { grid-template-columns: 1fr; } .summary > div + div { padding-left: 0; border-left: 0; border-top: 1px solid var(--line); } }
+
+  .toc { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 40px; }
+  .toc a { text-decoration: none; font-size: 14px; font-weight: 500; padding: 10px 14px; border: 1px solid var(--line); border-radius: 2px; }
+  .toc a:hover { border-color: var(--ink); }
+
+  .route { padding-block: 72px; border-top: 1px solid var(--line); scroll-margin-top: 16px; }
+  .route-head { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: 12px 24px; margin-bottom: 28px; }
+  .route-head h2 { font-size: clamp(28px, 3vw, 40px); }
+  .route-head code { font: 500 14px/1 ui-monospace, "SF Mono", Menlo, monospace; color: var(--copper-deep); margin-left: 14px; }
+  .route-head .links { display: flex; gap: 20px; font-size: 14px; font-weight: 500; }
+  .route-head .links a { text-decoration: none; border-bottom: 1px solid var(--copper); padding-bottom: 3px; }
+  .route p.desc { color: var(--muted); max-width: 60em; margin-bottom: 28px; }
+  .frames { display: flex; gap: 32px; align-items: flex-start; }
+  .frame { flex: none; }
+  .frame .cap { font-size: 12px; letter-spacing: .14em; text-transform: uppercase; font-weight: 600; color: var(--muted); margin-bottom: 10px; display: flex; justify-content: space-between; }
+  .viewport { position: relative; overflow: hidden; background: #fff; border: 1px solid rgba(23,23,23,.24); box-shadow: 0 1px 0 rgba(23,23,23,.04); }
+  .viewport iframe { position: absolute; top: 0; left: 0; border: 0; transform-origin: 0 0; background: var(--ivory); }
+  .frames { gap: 28px; }
+  .d .viewport { width: 605px; height: 560px; }
+  .d iframe { width: 1440px; height: 1334px; transform: scale(.42); }
+  .t .viewport { width: 346px; height: 560px; border-radius: 10px; }
+  .t iframe { width: 768px; height: 1245px; transform: scale(.45); }
+  .m .viewport { width: 234px; height: 560px; border-radius: 22px; }
+  .m iframe { width: 390px; height: 934px; transform: scale(.6); }
+  @media (max-width: 1260px) { .frames { flex-wrap: wrap; } .d { display: none; } }
+  @media (max-width: 640px) { .t { display: none; } }
+  .modes { display: inline-flex; border: 1px solid var(--ink); border-radius: 2px; margin-top: 40px; }
+  .modes button { font: 500 14px/1 var(--sans); padding: 13px 18px; min-height: 44px; border: 0; background: transparent; color: var(--ink); cursor: pointer; }
+  .modes button[aria-pressed="true"] { background: var(--ink); color: var(--ivory); }
+  .modes-hint { font-size: 14px; color: var(--muted); margin-top: 12px; max-width: 60em; }
+  .foot { padding-block: 64px 96px; border-top: 1px solid var(--ink); }
+  .steps { margin: 20px 0 0; padding-left: 1.2em; display: flex; flex-direction: column; gap: 10px; max-width: 760px; }
+  .steps code { font: 500 14px ui-monospace, "SF Mono", Menlo, monospace; background: rgba(23,23,23,.06); padding: 1px 6px; border-radius: 2px; }
+</style>
+
+<header class="top">
+  <div class="wrap">
+    <div>
+      <p class="label">Design approval · v2 · Page Copy reconciled</p>
+      <h1>Website design for approval</h1>
+      <p class="sub">Desktop (1440), tablet (768) and mobile (390) previews of every launch page, the blog post template, the 404 page and the component sheet. Each frame is the live page: scroll inside it, or open it full size.</p>
+    </div>
+    <img src="assets/logo-ivory.png" alt="Nandita Speaks" width="1073" height="753">
+  </div>
+</header>
+
+<main class="wrap">
+  <div class="summary">
+    <div>
+      <p class="label">Direction</p>
+      <h2>Black and ivory lead</h2>
+      <ul><li>Brand board palette and Marcellus with Manrope, pending client approval over the older black-and-gold proposal</li><li>Copper only as hairlines, numerals and text on black</li><li>Square buttons, one CTA wording everywhere</li></ul>
+    </div>
+    <div>
+      <p class="label">Dashed copper notes</p>
+      <h2>What is hidden or pending</h2>
+      <ul><li>Switch to Public view to see exactly what a visitor would see today</li><li>Talk ideas, session details, synopsis, buy link and contact details stay hidden until confirmed</li><li>Photo slots wait for Nandita&rsquo;s real photographs</li></ul>
+    </div>
+    <div>
+      <p class="label">Copy source</p>
+      <h2>Page Copy, word for word</h2>
+      <ul><li>Home, Speaking and About now use the client&rsquo;s Page Copy exactly, including headings</li><li>Silent Screams, Blog, Contact, Privacy and 404 copy is not supplied yet; only approved sentences are reused</li><li>Made-up testimonials and claims from the current site are removed</li></ul>
+    </div>
+  </div>
+  <div class="modes" role="group" aria-label="Preview mode"><button type="button" aria-pressed="true" data-mode="">Private preview with notes</button><button type="button" aria-pressed="false" data-mode="public">Public view</button></div>
+  <p class="modes-hint">Private preview shows dashed copper design notes and pending copy. Public view hides them and every section that is not cleared for visitors.</p>
+  <nav class="toc" aria-label="Frames">
+    <a href="#home">Home</a><a href="#about">About</a><a href="#speaking">Speaking</a><a href="#silent-screams">Silent Screams</a><a href="#blog">Blog</a><a href="#article">Blog post</a><a href="#contact">Contact</a><a href="#privacy-policy">Privacy Policy</a><a href="#notfound">404</a><a href="#components">Components</a><a href="#figma">Import to Figma</a>
+  </nav>
+
+  <div id="routes"></div>
+
+  <section class="foot" id="figma" aria-labelledby="figma-h">
+    <p class="label">Handover</p>
+    <h2 id="figma-h" style="font-size:36px;margin-top:12px">Bringing these frames into Figma</h2>
+    <ol class="steps">
+      <li>Serve the frames locally from the repo branch <code>design/figma-frames</code>: <code>python3 -m http.server 4610 --directory design</code></li>
+      <li>In Figma, run the html.to.design plugin and import each URL with <code>#public,static</code> on the end, for example <code>http://localhost:4610/frames/home.html#public,static</code>, with viewports 1440, 768 and 390 selected. The plugin creates one editable frame per width, with real text layers in Marcellus and Manrope.</li>
+      <li>Import <code>frames/components.html</code> once at 1440 and turn the specimens into Figma components and variants.</li>
+      <li>Swap each photo slot for the client&rsquo;s photographs once received. Swap the logo PNGs for production SVGs when supplied.</li>
+    </ol>
+  </section>
+</main>
+
+<script>
+  var ROUTES = [
+    ["home", "Home", "/", "Cinematic black hero with the exact H1 and the display line beside a full-height portrait. Then the self-belief story, who can invite her, the five themes with a sticky heading, the chemotherapy story full-bleed, where she has spoken, the book, the organiser FAQ and the closing invitation."],
+    ["about", "About", "/about/", "The quiet, personal page. Opens on stone with Quick facts as a ruled list and the portrait breaking into the story below. My story reads as one long column with a drop cap and asymmetric photographs, then What I do now, What I believe as a black manifesto, FAQ."],
+    ["speaking", "Speaking", "/speaking/", "The organiser&rsquo;s page, laid out like an event programme: an on-page index, anchored #women and #companies sections, the five themes with the longer Speaking descriptions, talk ideas (hidden until approved), a copyable programme bio, FAQ."],
+    ["silent-screams", "Silent Screams", "/silent-screams/", "The literary page. Centred like a title page, with the cover as the hero object overlapping into the next section. Page copy, synopsis and the purchase link are pending."],
+    ["blog", "Blog", "/blog/", "A masthead-style head, one large featured story, a category filter and a three-column index (one column on mobile) with Load More after nine posts."],
+    ["article", "Blog post", "/blog/[slug]/", "Template: category, H1, author, date, reading time, featured image, 700 px reading column with headings, quotes, lists and images, author box, CTA and three related posts."],
+    ["contact", "Contact", "/contact/", "A split working page: the invitation on black, the seven agreed fields on ivory. Submit it empty to see the error state, then fill it in to see the thank-you state."],
+    ["privacy-policy", "Privacy Policy", "/privacy-policy/", "Reading layout with a sticky section list. Policy text is to be supplied."],
+    ["404", "404 page", "Any unknown URL", "A calm dead end on black that points to Home, Speaking and the enquiry form, served with a real 404 status."],
+    ["components", "Components & tokens", "Design system", "Colour with measured contrast, type scale, grid and spacing tokens, buttons, header and mobile menu, form states, FAQ, cards, photo slots and the CTA band."]
+  ];
+  var html = ROUTES.map(function (r) {
+    var src = "frames/" + r[0] + ".html";
+    var sid = r[0] === "404" ? "notfound" : r[0];
+    return '<section class="route" id="' + sid + '" aria-labelledby="h-' + sid + '">' +
+      '<div class="route-head"><h2 id="h-' + sid + '">' + r[1] + '<code>' + r[2] + '</code></h2>' +
+      '<div class="links"><a data-src="' + src + '" href="' + src + '" target="_blank" rel="noopener">Open full size</a></div></div>' +
+      '<p class="desc">' + r[3] + '</p>' +
+      '<div class="frames">' +
+        '<div class="frame d"><p class="cap"><span>Desktop</span><span>1440</span></p><div class="viewport"><iframe data-src="' + src + '" src="' + src + '" title="' + r[1] + ' desktop frame" loading="lazy"></iframe></div></div>' +
+        '<div class="frame t"><p class="cap"><span>Tablet</span><span>768</span></p><div class="viewport"><iframe data-src="' + src + '" src="' + src + '" title="' + r[1] + ' tablet frame" loading="lazy"></iframe></div></div>' +
+        '<div class="frame m"><p class="cap"><span>Mobile</span><span>390</span></p><div class="viewport"><iframe data-src="' + src + '" src="' + src + '" title="' + r[1] + ' mobile frame" loading="lazy"></iframe></div></div>' +
+      '</div></section>';
+  }).join("");
+  document.getElementById("routes").innerHTML = html;
+  document.querySelectorAll(".modes button").forEach(function (b) {
+    b.addEventListener("click", function () {
+      var m = b.getAttribute("data-mode");
+      document.querySelectorAll(".modes button").forEach(function (x) { x.setAttribute("aria-pressed", String(x === b)); });
+      document.querySelectorAll("iframe[data-src]").forEach(function (f) { f.src = f.getAttribute("data-src") + (m ? "#" + m : ""); });
+      document.querySelectorAll("a[data-src]").forEach(function (a) { a.href = a.getAttribute("data-src") + (m ? "#" + m : ""); });
+    });
+  });
+</script>
