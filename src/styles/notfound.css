@@ -1,0 +1,16 @@
+/* Page styles for notfound, scoped under .pg-notfound. Generated from design/src/pages/404.html. */
+.pg-notfound .nf { background: var(--ink); color: var(--ivory); }
+.pg-notfound .nf .wrap { padding-block: 120px 128px; display: grid; grid-template-columns: repeat(12, minmax(0,1fr)); column-gap: 24px; row-gap: 48px; align-items: center; }
+.pg-notfound .nf .t { grid-column: 1 / span 7; display: flex; flex-direction: column; gap: 28px; }
+.pg-notfound .nf .code { font-size: 13px; letter-spacing: .2em; text-transform: uppercase; font-weight: 600; color: var(--copper); }
+.pg-notfound .nf h1 { font-size: clamp(42px, 5.6vw, 84px); line-height: 1.02; }
+.pg-notfound .nf .mark { grid-column: 9 / -1; opacity: .9; }
+.pg-notfound .nf nav { display: flex; flex-direction: column; border-top: 1px solid var(--line-dark); max-width: 520px; }
+.pg-notfound .nf nav a { padding: 16px 0; border-bottom: 1px solid var(--line-dark); text-decoration: none; display: flex; justify-content: space-between; color: var(--muted-dark); }
+.pg-notfound .nf nav a:hover { color: var(--ivory); }
+.pg-notfound .nf nav a span { color: var(--copper); }
+@media (max-width: 767px) {
+.pg-notfound .nf .wrap { grid-template-columns: 1fr; padding-block: 64px 80px; }
+.pg-notfound .nf .wrap > * { grid-column: 1 !important; }
+.pg-notfound .nf .mark { max-width: 160px; order: -1; }
+}

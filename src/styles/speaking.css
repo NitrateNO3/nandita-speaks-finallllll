@@ -1,0 +1,94 @@
+/* Page styles for speaking, scoped under .pg-speaking. Generated from design/src/pages/speaking.html. */
+.pg-speaking .s-head { background: var(--ink); color: var(--ivory); }
+.pg-speaking .s-head .wrap { padding-block: 96px 0; }
+.pg-speaking .s-head-grid { display: grid; grid-template-columns: repeat(12, minmax(0,1fr)); column-gap: 24px; row-gap: 40px; }
+.pg-speaking .s-head .t { grid-column: 1 / span 8; display: flex; flex-direction: column; gap: 28px; padding-bottom: 88px; }
+.pg-speaking .s-head h1 { font-size: clamp(40px, 5.4vw, 80px); line-height: 1.02; letter-spacing: -.01em; max-width: 11em; }
+.pg-speaking .s-head .lede { color: var(--muted-dark); max-width: 36em; }
+.pg-speaking .index { grid-column: 10 / -1; align-self: end; padding-bottom: 88px; }
+.pg-speaking .index p { font-size: 12px; letter-spacing: .16em; text-transform: uppercase; font-weight: 600; color: var(--copper); margin-bottom: 12px; }
+.pg-speaking .index ol { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--line-dark); counter-reset: i; }
+.pg-speaking .index li { counter-increment: i; border-bottom: 1px solid var(--line-dark); }
+.pg-speaking .index a { display: grid; grid-template-columns: 32px 1fr; padding: 13px 0; text-decoration: none; font-size: 15px; color: var(--muted-dark); }
+.pg-speaking .index a::before { content: counter(i, decimal-leading-zero); color: var(--copper); font-size: 12px; padding-top: 3px; }
+.pg-speaking .index a:hover { color: var(--ivory); }
+@media (max-width: 1023px) {
+.pg-speaking .s-head .t { grid-column: 1 / -1; padding-bottom: 0; }
+.pg-speaking .index { grid-column: 1 / span 8; padding-bottom: 72px; }
+}
+@media (max-width: 767px) {
+.pg-speaking .s-head .wrap { padding-block: 48px 0; }
+.pg-speaking .s-head-grid { grid-template-columns: 1fr; }
+.pg-speaking .s-head-grid > * { grid-column: 1 !important; }
+.pg-speaking .index { padding-bottom: 56px; }
+}
+.pg-speaking .who { display: grid; grid-template-columns: repeat(12, minmax(0,1fr)); column-gap: 24px; }
+.pg-speaking .who > h2 { grid-column: 1 / -1; margin-bottom: 56px; }
+.pg-speaking .aud-row { grid-column: 1 / -1; display: grid; grid-template-columns: repeat(12, minmax(0,1fr)); column-gap: 24px; padding-block: 48px 56px; border-top: 1px solid var(--ink); scroll-margin-top: calc(var(--header-h) + 24px); }
+.pg-speaking .aud-row + .aud-row { border-top-color: var(--line); }
+.pg-speaking .aud-row h3 { grid-column: 1 / span 4; font-size: clamp(24px, 2.3vw, 32px); }
+.pg-speaking .aud-row .body { grid-column: 6 / span 6; display: flex; flex-direction: column; gap: 18px; }
+.pg-speaking .aud-row .body p:first-child { font-size: 20px; line-height: 1.6; }
+.pg-speaking .aud-row .body p + p { color: var(--muted); }
+@media (max-width: 767px) {
+.pg-speaking .who, .pg-speaking .aud-row { grid-template-columns: 1fr; row-gap: 18px; }
+.pg-speaking .who > *, .pg-speaking .aud-row > * { grid-column: 1 !important; }
+.pg-speaking .who > h2 { margin-bottom: 24px; }
+.pg-speaking .aud-row { padding-block: 32px 40px; }
+}
+.pg-speaking .t-table { border-top: 1px solid var(--ink); margin-top: 48px; }
+.pg-speaking .t-row { display: grid; grid-template-columns: 80px minmax(0, 4fr) minmax(0, 6fr); gap: 24px; padding: 30px 0; border-bottom: 1px solid rgba(23,23,23,.2); align-items: baseline; }
+.pg-speaking .t-row .n { font-family: var(--display); font-size: 30px; color: var(--copper-deep); }
+.pg-speaking .t-row p { color: var(--muted); }
+@media (max-width: 767px) {
+.pg-speaking .t-row { grid-template-columns: 40px minmax(0,1fr); gap: 10px 14px; }
+.pg-speaking .t-row .n { font-size: 22px; }
+.pg-speaking .t-row p { grid-column: 2; }
+}
+.pg-speaking .talks-head { display: grid; grid-template-columns: repeat(12, minmax(0,1fr)); column-gap: 24px; row-gap: 20px; align-items: end; margin-bottom: 56px; }
+.pg-speaking .talks-head h2 { grid-column: 1 / span 6; }
+.pg-speaking .talks-head p { grid-column: 8 / -1; color: var(--muted-dark); }
+.pg-speaking .talk { display: grid; grid-template-columns: repeat(12, minmax(0,1fr)); column-gap: 24px; row-gap: 20px; padding-block: 48px; border-top: 1px solid var(--line-dark); }
+.pg-speaking .talk:first-of-type { border-top-color: var(--ivory); }
+.pg-speaking .talk h3 { grid-column: 1 / span 5; font-size: clamp(26px, 2.6vw, 38px); line-height: 1.15; }
+.pg-speaking .talk .desc { grid-column: 6 / span 4; color: var(--muted-dark); font-size: 16px; }
+.pg-speaking .talk .qs { grid-column: 10 / -1; }
+.pg-speaking .talk .qs p { font-size: 11px; letter-spacing: .16em; text-transform: uppercase; font-weight: 600; color: var(--copper); margin-bottom: 12px; }
+.pg-speaking .talk ul { margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 12px; }
+.pg-speaking .talk li { font-size: 15px; line-height: 1.5; padding-left: 18px; position: relative; }
+.pg-speaking .talk li::before { content: ""; position: absolute; left: 0; top: .72em; width: 9px; height: 1px; background: var(--copper); }
+@media (max-width: 1023px) {
+.pg-speaking .talk h3 { grid-column: 1 / -1; }
+.pg-speaking .talk .desc { grid-column: 1 / span 7; }
+.pg-speaking .talk .qs { grid-column: 8 / -1; }
+}
+@media (max-width: 767px) {
+.pg-speaking .talks-head, .pg-speaking .talk { grid-template-columns: 1fr; }
+.pg-speaking .talks-head > *, .pg-speaking .talk > * { grid-column: 1 !important; }
+.pg-speaking .talk { padding-block: 36px; }
+}
+.pg-speaking .bio { display: grid; grid-template-columns: repeat(12, minmax(0,1fr)); column-gap: 24px; row-gap: 32px; align-items: start; }
+.pg-speaking .bio .h { grid-column: 1 / span 4; display: flex; flex-direction: column; gap: 18px; }
+.pg-speaking .bio .card-bio { grid-column: 6 / -1; background: var(--ivory); padding: 44px 48px; border-top: 2px solid var(--ink); }
+.pg-speaking .bio .card-bio p.txt { font-family: var(--display); font-size: clamp(20px, 1.8vw, 25px); line-height: 1.5; }
+.pg-speaking .bio .tools { display: flex; flex-wrap: wrap; gap: 16px 24px; align-items: center; margin-top: 28px; padding-top: 20px; border-top: 1px solid var(--line); }
+@media (max-width: 767px) {
+.pg-speaking .bio { grid-template-columns: 1fr; }
+.pg-speaking .bio > * { grid-column: 1 !important; }
+.pg-speaking .bio .card-bio { padding: 28px 22px; }
+}
+.pg-speaking .spoken { display: grid; grid-template-columns: repeat(12, minmax(0,1fr)); column-gap: 24px; row-gap: 16px; align-items: baseline; }
+.pg-speaking .spoken h2 { grid-column: 1 / span 4; font-size: clamp(24px, 2vw, 30px); }
+.pg-speaking .spoken .stmt { grid-column: 6 / -1; font-family: var(--display); font-size: clamp(26px, 2.8vw, 40px); line-height: 1.2; }
+@media (max-width: 767px) {
+.pg-speaking .spoken { grid-template-columns: 1fr; }
+.pg-speaking .spoken > * { grid-column: 1 !important; }
+}
+.pg-speaking .faq-grid { display: grid; grid-template-columns: repeat(12, minmax(0,1fr)); column-gap: 24px; row-gap: 32px; }
+.pg-speaking .faq-grid .faq-head { grid-column: 1 / span 4; }
+.pg-speaking .faq-grid .faq-body { grid-column: 6 / -1; }
+@media (max-width: 767px) {
+.pg-speaking .faq-grid { grid-template-columns: 1fr; }
+.pg-speaking .faq-grid > * { grid-column: 1 !important; }
+}
+.pg-speaking .talks-note { margin-bottom: 40px; } .pg-speaking .talks-outro { margin-top: 40px; color: var(--muted-dark); max-width: 36em; } .pg-speaking .session { border-top: 1px solid var(--ink); } .pg-speaking .faq-later { margin-top: 24px; }

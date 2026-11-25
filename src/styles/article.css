@@ -1,0 +1,22 @@
+/* Page styles for article, scoped under .pg-article. Generated from design/src/pages/article.html. */
+.pg-article .a-head .wrap { padding-block: 80px 48px; }
+.pg-article .a-head .t { max-width: 900px; margin-inline: auto; display: flex; flex-direction: column; gap: 24px; text-align: left; }
+.pg-article .crumbs { font-size: 13px; color: var(--muted); display: flex; gap: 10px; }
+.pg-article .crumbs a { text-decoration: none; border-bottom: 1px solid var(--copper); }
+.pg-article .a-meta { display: flex; flex-wrap: wrap; gap: 8px 28px; font-size: 14px; color: var(--muted); padding-top: 20px; border-top: 1px solid var(--line); }
+.pg-article .a-meta b { color: var(--ink); font-weight: 600; }
+.pg-article .a-meta .cat { color: var(--copper-deep); font-weight: 600; letter-spacing: .14em; text-transform: uppercase; font-size: 12px; }
+.pg-article .a-img { max-width: 1120px; margin-inline: auto; }
+.pg-article .body { max-width: var(--measure); margin-inline: auto; display: flex; flex-direction: column; gap: 1.2em; }
+.pg-article .body p { font-size: 18px; line-height: 1.8; }
+.pg-article .body h2 { font-size: clamp(26px, 2.4vw, 34px); margin-top: .8em; }
+.pg-article .body blockquote { margin: .6em 0; padding: 8px 0 8px 28px; border-left: 1px solid var(--copper); font-family: var(--display); font-size: clamp(24px, 2.2vw, 30px); line-height: 1.35; }
+.pg-article .body ul { margin: 0; padding-left: 1.2em; display: flex; flex-direction: column; gap: .5em; font-size: 18px; }
+.pg-article .body ul li::marker { color: var(--copper-deep); }
+.pg-article .author { max-width: var(--measure); margin: 72px auto 0; display: grid; grid-template-columns: 96px minmax(0,1fr); gap: 24px; padding: 32px 0; border-top: 1px solid var(--ink); border-bottom: 1px solid var(--line); align-items: center; }
+.pg-article .author :is(.ph, .photo, .photo-brand) { aspect-ratio: 1; border-radius: 50%; }
+.pg-article .author :is(.ph, .photo, .photo-brand)::before { border-radius: 50%; inset: 6px; }
+.pg-article .author :is(.ph, .photo, .photo-brand) figcaption { display: none; }
+@media (max-width: 767px) {
+.pg-article .author { grid-template-columns: 72px minmax(0,1fr); }
+}

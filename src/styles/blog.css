@@ -1,0 +1,25 @@
+/* Page styles for blog, scoped under .pg-blog. Generated from design/src/pages/blog.html. */
+.pg-blog .masthead .wrap { padding-block: 88px 40px; display: grid; grid-template-columns: repeat(12, minmax(0,1fr)); column-gap: 24px; row-gap: 24px; align-items: end; border-bottom: 1px solid var(--ink); }
+.pg-blog .masthead h1 { grid-column: 1 / span 6; font-size: clamp(56px, 9vw, 132px); line-height: .9; letter-spacing: -.02em; }
+.pg-blog .masthead .intro { grid-column: 8 / -1; padding-bottom: 14px; }
+@media (max-width: 767px) {
+.pg-blog .masthead .wrap { grid-template-columns: 1fr; padding-block: 48px 28px; }
+.pg-blog .masthead .wrap > * { grid-column: 1 !important; }
+}
+.pg-blog .featured { display: grid; grid-template-columns: repeat(12, minmax(0,1fr)); column-gap: 24px; row-gap: 24px; text-decoration: none; padding-block: 56px; align-items: center; }
+.pg-blog .featured :is(.ph, .photo, .photo-brand) { grid-column: 1 / span 7; }
+.pg-blog .featured .ft { grid-column: 9 / -1; display: flex; flex-direction: column; gap: 18px; }
+.pg-blog .featured .meta { display: flex; gap: 12px; font-size: 12px; letter-spacing: .14em; text-transform: uppercase; font-weight: 600; color: var(--copper-deep); }
+.pg-blog .featured .meta time { color: var(--muted); font-weight: 500; }
+.pg-blog .featured:hover h2 { text-decoration: underline; text-decoration-color: var(--copper); text-underline-offset: 8px; text-decoration-thickness: 1px; }
+@media (max-width: 767px) {
+.pg-blog .featured { grid-template-columns: 1fr; padding-block: 36px; }
+.pg-blog .featured > * { grid-column: 1 !important; }
+}
+.pg-blog .filters { display: flex; gap: 8px; flex-wrap: wrap; }
+.pg-blog .chip { min-height: 44px; padding: 0 18px; display: inline-flex; align-items: center; border: 1px solid rgba(23,23,23,.28); border-radius: var(--radius); font: 500 14px/1 var(--sans); background: transparent; color: var(--ink); cursor: pointer; white-space: nowrap; }
+.pg-blog .chip:hover { border-color: var(--ink); }
+.pg-blog .chip[aria-current="page"] { background: var(--ink); color: var(--ivory); border-color: var(--ink); }
+@media (max-width: 767px) {
+.pg-blog .filters { flex-wrap: nowrap; overflow-x: auto; margin-inline: calc(-1 * var(--pad)); padding-inline: var(--pad); scrollbar-width: none; }
+}

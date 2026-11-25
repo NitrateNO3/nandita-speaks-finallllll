@@ -1,6 +1,6 @@
 # Architecture recommendation
 
-Status: **proposal for approval.** No stack change has been made. Build starts only after the design is approved (PRD phase 3 gate).
+Status: **approved and implemented** on branch `redesign/nextjs` (milestone 1, 25 Nov 2026). See `docs/DEPLOYMENT.md` and `docs/QA-REPORT.md`.
 
 ## 1. Audit of the current repository (branch `main`, commit d3a9e75)
 
