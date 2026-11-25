@@ -1,0 +1,513 @@
+<!doctype html>
+<html lang="en-IN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Components & tokens — Nandita Speaks</title>
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Marcellus&family=Manrope:wght@400;500;600;700&display=swap">
+<style>
+/* Nandita Speaks — design frames v1 (for client approval)
+   Layout: 12-col editorial grid, 1440 frame, 64–80 side padding; black/ivory lead, copper as hairlines,
+   numerals and marks only. Single brand look by choice (the site itself is not theme-switching). */
+:root {
+  color-scheme: light;
+  /* Brand palette (brand board) */
+  --ink: #171717;          /* Soft Black — primary dark */
+  --ivory: #F4EFE7;        /* Warm Ivory — reading surface */
+  --copper: #B77B61;       /* Muted Copper — accent: rules, numerals, text on black only */
+  --stone: #D8CFC3;        /* Warm Stone — secondary surface */
+  /* Derived for contrast (proposed, needs approval) */
+  --ink-2: #222020;        /* raised panel on black */
+  --copper-deep: #7A4733;  /* copper for small text: 6.6:1 on ivory, 4.9:1 on stone */
+  --muted: #5A534B;        /* secondary text: 6.6:1 on ivory, 4.9:1 on stone */
+  --muted-dark: #B9B1A6;   /* secondary text on black: 8.5:1 */
+  --line: rgba(23, 23, 23, .16);
+  --line-dark: rgba(244, 239, 231, .16);
+  --error: #9B2C1F;
+
+  --display: "Marcellus", "Cormorant Garamond", Georgia, "Times New Roman", serif;
+  --sans: "Manrope", "Helvetica Neue", Arial, system-ui, sans-serif;
+
+  --max: 1440px;
+  --pad: 72px;
+  --section: 120px;
+  --measure: 700px;
+  --radius: 2px;
+  --header-h: 88px;
+}
+@media (max-width: 1023px) { :root { --pad: 32px; --section: 96px; } }
+@media (max-width: 767px)  { :root { --pad: 20px; --section: 64px; --header-h: 68px; } }
+
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0; background: var(--ivory); color: var(--ink);
+  font-family: var(--sans); font-size: 17px; line-height: 1.65; font-weight: 400;
+  -webkit-font-smoothing: antialiased;
+}
+@media (max-width: 767px) { body { font-size: 16px; } }
+img { max-width: 100%; height: auto; display: block; }
+a { color: inherit; }
+:focus-visible { outline: 2px solid var(--copper); outline-offset: 3px; }
+@media (prefers-reduced-motion: reduce) { *, *::before, *::after { transition: none !important; animation: none !important; } }
+
+/* ---------- Layout ---------- */
+.wrap {
+  max-width: var(--max); margin: 0 auto;
+  padding-left: max(var(--pad), env(safe-area-inset-left, 0px));
+  padding-right: max(var(--pad), env(safe-area-inset-right, 0px));
+}
+.band { padding-block: var(--section); }
+.band--tight { padding-block: calc(var(--section) * .66); }
+.on-ink { background: var(--ink); color: var(--ivory); }
+.on-stone { background: var(--stone); }
+.grid { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: 24px; }
+@media (max-width: 1023px) { .grid { column-gap: 20px; } }
+@media (max-width: 767px)  { .grid { grid-template-columns: minmax(0, 1fr); row-gap: 32px; } .grid > * { grid-column: 1 / -1 !important; } }
+.stack { display: flex; flex-direction: column; }
+.rule { height: 1px; background: var(--copper); border: 0; margin: 0; }
+
+/* ---------- Type ---------- */
+h1, h2, h3, .display { font-family: var(--display); font-weight: 400; margin: 0; text-wrap: balance; letter-spacing: -.005em; }
+.display { font-size: clamp(40px, 5.6vw, 80px); line-height: 1.04; }
+.page-title { font-size: clamp(34px, 4.4vw, 64px); line-height: 1.06; }
+h2, .h2 { font-size: clamp(29px, 3.2vw, 46px); line-height: 1.12; }
+h3, .h3 { font-size: clamp(22px, 2vw, 28px); line-height: 1.25; }
+p { margin: 0; }
+.lede { font-size: clamp(18px, 1.5vw, 20px); line-height: 1.6; max-width: 34em; }
+.small { font-size: 14px; line-height: 1.55; }
+.muted { color: var(--muted); }
+.on-ink .muted { color: var(--muted-dark); }
+.label {
+  font-family: var(--sans); font-size: 12px; font-weight: 600; letter-spacing: .16em; text-transform: uppercase;
+  color: var(--copper-deep); display: inline-flex; align-items: center; gap: 14px;
+}
+.label::before { content: ""; width: 28px; height: 1px; background: currentColor; }
+.on-ink .label { color: var(--copper); }
+.prose { max-width: var(--measure); display: flex; flex-direction: column; gap: 1.15em; }
+.prose p { font-size: 18px; line-height: 1.75; }
+@media (max-width: 767px) { .prose p { font-size: 17px; } }
+
+/* ---------- Buttons & links ---------- */
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+  min-height: 52px; padding: 0 26px; border-radius: var(--radius);
+  font: 500 15px/1 var(--sans); letter-spacing: .02em; text-decoration: none; white-space: nowrap;
+  background: var(--ink); color: var(--ivory); border: 1px solid var(--ink);
+  transition: background .22s ease, color .22s ease, border-color .22s ease;
+  cursor: pointer;
+}
+.btn:hover, .btn.is-hover { background: #2e2a27; border-color: #2e2a27; }
+.btn::after { content: ""; width: 18px; height: 1px; background: var(--copper); transition: width .22s ease; }
+.btn:hover::after, .btn.is-hover::after { width: 26px; }
+.btn--light { background: var(--ivory); color: var(--ink); border-color: var(--ivory); }
+.btn--light:hover, .btn--light.is-hover { background: #fff; border-color: #fff; }
+.btn--light::after { background: var(--copper-deep); }
+.btn--ghost { background: transparent; color: var(--ink); border-color: var(--ink); }
+.btn--ghost:hover, .btn--ghost.is-hover { background: var(--ink); color: var(--ivory); }
+.on-ink .btn--ghost { color: var(--ivory); border-color: rgba(244,239,231,.5); }
+.btn--sm { min-height: 44px; padding: 0 18px; font-size: 14px; }
+.btn--sm::after { display: none; }
+.btn[disabled], .btn.is-disabled { opacity: .45; cursor: not-allowed; }
+.btn.is-focus { outline: 2px solid var(--copper); outline-offset: 3px; }
+.link {
+  font: 500 15px/1.4 var(--sans); text-decoration: none; display: inline-flex; gap: 10px; align-items: center;
+  border-bottom: 1px solid var(--copper); padding-bottom: 4px;
+}
+.link:hover { border-bottom-color: currentColor; }
+.link span[aria-hidden] { transition: transform .22s ease; }
+.link:hover span[aria-hidden] { transform: translateX(4px); }
+.actions { display: flex; flex-wrap: wrap; gap: 20px 28px; align-items: center; }
+
+/* ---------- Header ---------- */
+body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 60; background: var(--ink); }
+.site-header { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 50; background: var(--ink); color: var(--ivory); border-bottom: 1px solid var(--line-dark); }
+.site-header .wrap { height: var(--header-h); display: flex; align-items: center; gap: 32px; }
+.brand { display: block; flex: none; }
+.brand img { height: 58px; width: auto; }
+@media (max-width: 767px) { .brand img { height: 46px; } }
+.nav { margin-left: auto; display: flex; gap: 30px; }
+.nav a { font: 500 14px/1 var(--sans); letter-spacing: .03em; text-decoration: none; color: var(--muted-dark); padding: 10px 0; border-bottom: 1px solid transparent; }
+.nav a:hover { color: var(--ivory); }
+.nav a[aria-current="page"] { color: var(--ivory); border-bottom-color: var(--copper); }
+.menu-btn {
+  display: none; width: 44px; height: 44px; border: 1px solid var(--line-dark); background: transparent; color: var(--ivory);
+  border-radius: var(--radius); align-items: center; justify-content: center; cursor: pointer; flex: none;
+}
+.menu-btn span { display: block; width: 18px; height: 1px; background: currentColor; box-shadow: 0 -6px 0 currentColor, 0 6px 0 currentColor; }
+@media (max-width: 1100px) { .nav { gap: 22px; } }
+@media (max-width: 1023px) {
+  .nav { display: none; }
+  .menu-btn { display: inline-flex; }
+  .site-header .header-cta { margin-left: auto; }
+}
+@media (max-width: 767px) { .site-header .wrap { gap: 12px; } .header-cta { padding: 0 14px !important; font-size: 13px !important; } }
+@media (max-width: 359px) { .header-cta { font-size: 12px !important; padding: 0 10px !important; } .brand img { height: 40px; } }
+.mobile-menu { position: fixed; inset: calc(var(--header-h) + env(safe-area-inset-top, 0px)) 0 0; background: var(--ink); color: var(--ivory); z-index: 49; overflow-y: auto; }
+.mobile-menu .wrap { padding-block: 32px 48px; display: flex; flex-direction: column; gap: 4px; }
+.mobile-menu a.m-link { font: 400 30px/1.2 var(--display); text-decoration: none; padding: 14px 0; border-bottom: 1px solid var(--line-dark); display: flex; justify-content: space-between; align-items: baseline; }
+.mobile-menu a.m-link[aria-current="page"] { color: var(--copper); }
+.mobile-menu a.m-link small { font: 500 12px/1 var(--sans); letter-spacing: .14em; color: var(--muted-dark); }
+
+/* ---------- Footer ---------- */
+.site-footer { background: var(--ink); color: var(--ivory); border-top: 1px solid var(--line-dark); }
+.site-footer .wrap { padding-block: 88px 40px; }
+.footer-top { display: grid; grid-template-columns: 1.1fr 1fr 1fr; gap: 48px; align-items: start; }
+.footer-top img { height: 104px; width: auto; }
+.footer-nav { display: grid; grid-template-columns: 1fr 1fr; gap: 12px 32px; }
+.footer-nav a { text-decoration: none; color: var(--muted-dark); font-size: 15px; }
+.footer-nav a:hover { color: var(--ivory); }
+.footer-bottom { margin-top: 72px; padding-top: 24px; border-top: 1px solid var(--line-dark); display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px 32px; font-size: 13px; color: var(--muted-dark); }
+.footer-bottom a { color: var(--muted-dark); }
+@media (max-width: 1023px) { .footer-top { grid-template-columns: 1fr 1fr; } .footer-top > :first-child { grid-column: 1 / -1; } }
+@media (max-width: 767px) { .footer-top { grid-template-columns: 1fr; } .site-footer .wrap { padding-block: 64px 32px; } .footer-top img { height: 84px; } }
+
+/* ---------- Photo slots (until client photographs arrive) ---------- */
+.ph {
+  position: relative; margin: 0; background: var(--stone); overflow: hidden; max-width: 100%;
+  display: flex; align-items: flex-end; isolation: isolate;
+}
+.ph::before { content: ""; position: absolute; inset: 14px; border: 1px solid rgba(122, 71, 51, .45); pointer-events: none; }
+.ph .ph-mark { position: absolute; left: 50%; top: 46%; width: 34%; max-width: 180px; transform: translate(-50%, -50%); opacity: .38; z-index: -1; }
+.ph figcaption { position: relative; padding: 28px 32px; font-size: 12px; line-height: 1.5; letter-spacing: .04em; color: var(--copper-deep); }
+.ph figcaption b { display: block; font-weight: 600; letter-spacing: .16em; text-transform: uppercase; margin-bottom: 4px; }
+.on-ink .ph, .ph--dark { background: var(--ink-2); }
+.on-ink .ph::before, .ph--dark::before { border-color: rgba(183, 123, 97, .45); }
+.on-ink .ph figcaption, .ph--dark figcaption { color: var(--copper); }
+.ph--video .play { position: absolute; left: 50%; top: 46%; transform: translate(-50%, -50%); width: 76px; height: 76px; border: 1px solid currentColor; border-radius: 50%; color: var(--copper); display: grid; place-items: center; }
+.ph--video .play::after { content: ""; border-left: 14px solid currentColor; border-top: 9px solid transparent; border-bottom: 9px solid transparent; margin-left: 4px; }
+
+/* ---------- Annotations (design notes; not part of the built site) ---------- */
+.note {
+  border: 1px dashed var(--copper-deep); border-radius: var(--radius); padding: 14px 18px;
+  font-size: 13px; line-height: 1.55; color: var(--copper-deep); background: rgba(183, 123, 97, .06);
+  display: flex; gap: 12px; align-items: baseline;
+}
+.note b { font-weight: 700; letter-spacing: .14em; text-transform: uppercase; font-size: 11px; white-space: nowrap; }
+.on-ink .note { color: var(--copper); border-color: var(--copper); background: rgba(183, 123, 97, .08); }
+.hidden-section { padding-block: 28px; background: repeating-linear-gradient(135deg, transparent 0 10px, rgba(122,71,51,.05) 10px 11px); border-block: 1px dashed rgba(122,71,51,.4); }
+
+/* ---------- FAQ ---------- */
+.faq { border-top: 1px solid var(--line); }
+.faq-item { border-bottom: 1px solid var(--line); }
+.faq-item h3 { font-size: clamp(20px, 1.7vw, 24px); }
+.faq-item button {
+  all: unset; box-sizing: border-box; width: 100%; cursor: pointer; display: flex; justify-content: space-between; align-items: center; gap: 24px;
+  padding: 26px 0; font: inherit; line-height: 1.3;
+}
+.faq-item button:focus-visible { outline: 2px solid var(--copper); outline-offset: 2px; }
+.faq-icon { flex: none; width: 32px; height: 32px; border: 1px solid var(--line); border-radius: 50%; position: relative; }
+.faq-icon::before, .faq-icon::after { content: ""; position: absolute; left: 50%; top: 50%; width: 12px; height: 1px; background: var(--copper-deep); transform: translate(-50%, -50%); transition: transform .25s ease; }
+.faq-icon::after { transform: translate(-50%, -50%) rotate(90deg); }
+.faq-item button[aria-expanded="true"] .faq-icon::after { transform: translate(-50%, -50%) rotate(0deg); }
+.faq-panel { padding: 0 64px 28px 0; max-width: 760px; color: var(--muted); }
+@media (max-width: 767px) { .faq-panel { padding-right: 0; } .faq-item button { padding: 22px 0; } }
+
+/* ---------- CTA band ---------- */
+.cta-band { background: var(--ink); color: var(--ivory); text-align: left; }
+.cta-band .wrap { padding-block: 112px; display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 40px 64px; align-items: end; }
+.cta-band .cta-mark { width: 120px; opacity: .9; margin-bottom: 28px; }
+@media (max-width: 767px) { .cta-band .wrap { grid-template-columns: 1fr; padding-block: 72px; } }
+
+/* ---------- Article cards ---------- */
+.cards { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 56px 32px; }
+@media (max-width: 1023px) { .cards { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 767px) { .cards { grid-template-columns: minmax(0, 1fr); gap: 44px; } }
+.card { display: flex; flex-direction: column; gap: 14px; text-decoration: none; min-width: 0; }
+.card .ph { aspect-ratio: 4 / 3; }
+.card .meta { display: flex; gap: 12px; font-size: 12px; letter-spacing: .14em; text-transform: uppercase; font-weight: 600; color: var(--copper-deep); }
+.card .meta time { color: var(--muted); font-weight: 500; }
+.card h3 { font-size: 24px; line-height: 1.25; }
+.card p { color: var(--muted); font-size: 15px; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+.card:hover h3 { text-decoration: underline; text-decoration-color: var(--copper); text-underline-offset: 6px; text-decoration-thickness: 1px; }
+
+/* ---------- Forms ---------- */
+.field { display: flex; flex-direction: column; gap: 8px; min-width: 0; }
+.field label { font-size: 14px; font-weight: 600; }
+.field label .opt { font-weight: 400; color: var(--muted); }
+.field input, .field textarea {
+  font: 400 16px/1.5 var(--sans); color: var(--ink); background: #FBF8F3; border: 1px solid rgba(23,23,23,.28);
+  border-radius: var(--radius); padding: 14px 16px; min-height: 52px; width: 100%;
+  transition: border-color .2s ease, box-shadow .2s ease;
+}
+.field textarea { min-height: 168px; resize: vertical; }
+.field input:focus, .field textarea:focus, .field .is-focus { outline: none; border-color: var(--ink); box-shadow: 0 0 0 3px rgba(183,123,97,.35); }
+.field.has-error input, .field.has-error textarea { border-color: var(--error); }
+.field .err { font-size: 13px; color: var(--error); display: flex; gap: 6px; }
+.field .hint { font-size: 13px; color: var(--muted); }
+.form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+.form-grid .full { grid-column: 1 / -1; }
+@media (max-width: 767px) { .form-grid { grid-template-columns: 1fr; } }
+.hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+
+/* ---------- v2 additions ---------- */
+/* Public view: hides every design note and every section kept off for visitors (frames load with #public) */
+html.is-public .note, html.is-public .hidden-section, html.is-public [data-preview-only] { display: none !important; }
+/* Pending inline copy, visible only in the private preview */
+.pending { background: rgba(183,123,97,.14); border-bottom: 1px dashed var(--copper-deep); padding: 0 4px; font-style: normal; color: var(--copper-deep); font-size: .82em; font-family: var(--sans); font-weight: 600; letter-spacing: .02em; }
+.on-ink .pending { color: var(--copper); border-color: var(--copper); }
+html.is-public .pending { display: none; }
+
+/* Section rule: a short copper stroke above a section heading */
+.sr { display: flex; flex-direction: column; gap: 22px; }
+.sr::before { content: ""; width: 44px; height: 1px; background: var(--copper); }
+
+/* Motion: load sequence for page heads, reveal for content below the fold (added by script only) */
+@keyframes rise { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: none; } }
+.load-in > * { animation: rise .6s cubic-bezier(.2,.7,.2,1) both; }
+.load-in > *:nth-child(2) { animation-delay: .06s; } .load-in > *:nth-child(3) { animation-delay: .12s; }
+.load-in > *:nth-child(4) { animation-delay: .18s; } .load-in > *:nth-child(5) { animation-delay: .24s; }
+.js-reveal .rv { opacity: 0; transform: translateY(14px); transition: opacity .4s ease, transform .4s cubic-bezier(.2,.7,.2,1); }
+.js-reveal .rv.in { opacity: 1; transform: none; }
+@media (prefers-reduced-motion: reduce) { .load-in > * { animation: none; } .js-reveal .rv { opacity: 1; transform: none; } }
+
+/* Definition list (quick facts, session details) */
+.facts { margin: 0; border-top: 1px solid var(--ink); }
+.facts > div { display: grid; grid-template-columns: minmax(120px, 1fr) minmax(0, 2fr); gap: 16px; padding: 16px 0; border-bottom: 1px solid var(--line); }
+.facts dt { font-size: 12px; letter-spacing: .14em; text-transform: uppercase; font-weight: 600; color: var(--copper-deep); padding-top: 4px; }
+.facts dd { margin: 0; }
+.on-ink .facts { border-color: var(--ivory); } .on-ink .facts > div { border-color: var(--line-dark); } .on-ink .facts dt { color: var(--copper); }
+
+/* Inline text link inside running copy */
+.prose a, .tl { text-decoration: underline; text-decoration-color: var(--copper); text-decoration-thickness: 1px; text-underline-offset: 5px; }
+.prose a:hover, .tl:hover { text-decoration-color: currentColor; }
+/* Touch targets and skip link */
+.footer-bottom a, .crumbs a { display: inline-block; padding-block: 12px; margin-block: -12px; }
+.skip { position: absolute; left: 12px; top: -100px; z-index: 100; background: var(--ivory); color: var(--ink); padding: 12px 18px; font-weight: 600; text-decoration: none; }
+.skip:focus { top: calc(12px + env(safe-area-inset-top, 0px)); }
+html.is-static .load-in > * { animation: none; }
+
+</style>
+</head>
+<body>
+
+<main id="main" data-frame="Components">
+
+<style>
+  .sheet-head { background: var(--ink); color: var(--ivory); }
+  .sheet-head .wrap { padding-block: 56px; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: end; gap: 24px; }
+  .sheet-head img { height: 92px; width: auto; }
+  .sec { padding-block: 72px; border-bottom: 1px solid var(--line); }
+  .sec > .wrap > h2 { font-size: 34px; margin-bottom: 8px; }
+  .sec > .wrap > .sub { color: var(--muted); margin-bottom: 40px; max-width: 46em; }
+  .row { display: flex; flex-wrap: wrap; gap: 24px; align-items: flex-start; }
+  .row > div { min-width: 0; max-width: 100%; }
+  .spec { font-size: 12px; color: var(--muted); letter-spacing: .04em; margin-top: 10px; }
+  .swatches { display: grid; grid-template-columns: repeat(4, minmax(0,1fr)); gap: 24px; }
+  .swatches.derived { grid-template-columns: repeat(5, minmax(0,1fr)); }
+  .sw .chip-c { aspect-ratio: 3 / 2; border: 1px solid var(--line); }
+  .sw p { font-size: 14px; margin-top: 12px; } .sw b { font-weight: 600; display: block; }
+  .sw small { color: var(--muted); font-size: 12px; display: block; font-variant-numeric: tabular-nums; }
+  @media (max-width: 767px) { .swatches, .swatches.derived { grid-template-columns: repeat(2, minmax(0,1fr)); } }
+  .type-row { display: grid; grid-template-columns: 220px minmax(0,1fr); gap: 24px; padding: 20px 0; border-top: 1px solid var(--line); align-items: baseline; }
+  .type-row .k { font-size: 12px; color: var(--muted); line-height: 1.6; font-variant-numeric: tabular-nums; }
+  @media (max-width: 767px) { .type-row { grid-template-columns: 1fr; gap: 6px; } }
+  .gridviz { position: relative; height: 140px; display: grid; grid-template-columns: repeat(12, minmax(0,1fr)); gap: 24px; }
+  .gridviz span { background: rgba(183,123,97,.16); border-inline: 1px solid rgba(183,123,97,.5); }
+  @media (max-width: 767px) { .gridviz { grid-template-columns: repeat(4, minmax(0,1fr)); gap: 16px; } .gridviz span:nth-child(n+5) { display: none; } }
+  .tokens { width: 100%; border-collapse: collapse; font-size: 14px; font-variant-numeric: tabular-nums; }
+  .tokens th, .tokens td { text-align: left; padding: 12px 16px 12px 0; border-top: 1px solid var(--line); vertical-align: top; }
+  .tokens th { font-size: 12px; letter-spacing: .14em; text-transform: uppercase; color: var(--copper-deep); font-weight: 600; }
+  .scroll-x { overflow-x: auto; }
+  .frame-box { border: 1px solid var(--line); background: var(--ivory); overflow: hidden; }
+  .static-header .site-header { position: static; }
+  .mobile-demo { width: 390px; max-width: 100%; border: 1px solid var(--line); }
+  .mobile-demo .site-header .wrap { padding-left: 20px; padding-right: 20px; height: 68px; gap: 12px; }
+  .mobile-demo .nav { display: none; } .mobile-demo .menu-btn { display: inline-flex; } .mobile-demo .header-cta { margin-left: auto; padding: 0 14px !important; font-size: 13px !important; } .mobile-demo .brand img { height: 46px; }
+  .mobile-demo .mobile-menu { position: static; }
+  @media (max-width: 359px) { .mobile-demo .site-header .wrap { padding-left: 12px; padding-right: 12px; gap: 8px; } .mobile-demo .header-cta { font-size: 12px !important; padding: 0 10px !important; } .mobile-demo .brand img { height: 40px; } }
+  .mobile-demo .mobile-menu .wrap { padding-left: 20px; padding-right: 20px; }
+  .state-grid { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 32px; }
+  @media (max-width: 1023px) { .state-grid { grid-template-columns: 1fr; } }
+  .st-label { font-size: 12px; letter-spacing: .14em; text-transform: uppercase; font-weight: 600; color: var(--copper-deep); margin-bottom: 12px; }
+  .panel-dark { background: var(--ink); padding: 32px; display: flex; flex-wrap: wrap; gap: 24px; align-items: center; }
+</style>
+
+<header class="sheet-head">
+  <div class="wrap">
+    <div class="stack" style="gap:14px"><p class="label">Design system v1 · for approval</p><h1 class="page-title">Components, states &amp; tokens</h1></div>
+    <img src="../assets/logo-ivory.png" alt="Nandita Speaks" width="1073" height="753">
+  </div>
+</header>
+
+<section class="sec"><div class="wrap">
+  <h2>Colour</h2>
+  <p class="sub">Brand palette from the identity board. Black and ivory lead; copper is for hairlines, numerals and text on black; stone carries secondary sections.</p>
+  <div class="swatches">
+    <div class="sw"><div class="chip-c" style="background:#171717"></div><p><b>Soft Black</b><small>#171717 · primary dark</small></p></div>
+    <div class="sw"><div class="chip-c" style="background:#F4EFE7"></div><p><b>Warm Ivory</b><small>#F4EFE7 · reading surface</small></p></div>
+    <div class="sw"><div class="chip-c" style="background:#B77B61"></div><p><b>Muted Copper</b><small>#B77B61 · accent</small></p></div>
+    <div class="sw"><div class="chip-c" style="background:#D8CFC3"></div><p><b>Warm Stone</b><small>#D8CFC3 · secondary surface</small></p></div>
+  </div>
+  <p class="st-label" style="margin-top:48px">Derived for accessibility (proposed)</p>
+  <div class="swatches derived">
+    <div class="sw"><div class="chip-c" style="background:#7A4733"></div><p><b>Copper Deep</b><small>#7A4733 · small copper text, 6.6:1 ivory / 4.9:1 stone</small></p></div>
+    <div class="sw"><div class="chip-c" style="background:#5A534B"></div><p><b>Muted</b><small>#5A534B · secondary text, 6.6:1 ivory / 4.9:1 stone</small></p></div>
+    <div class="sw"><div class="chip-c" style="background:#B9B1A6"></div><p><b>Muted Dark</b><small>#B9B1A6 · secondary text on black, 8.5:1</small></p></div>
+    <div class="sw"><div class="chip-c" style="background:#222020"></div><p><b>Ink Raised</b><small>#222020 · panels on black</small></p></div>
+    <div class="sw"><div class="chip-c" style="background:#9B2C1F"></div><p><b>Error</b><small>#9B2C1F · form errors, 6.6:1</small></p></div>
+  </div>
+  <div class="scroll-x" style="margin-top:40px"><table class="tokens">
+    <thead><tr><th>Pairing</th><th>Contrast</th><th>Use</th></tr></thead>
+    <tbody>
+      <tr><td>Soft Black on Warm Ivory</td><td>15.7 : 1</td><td>All body text and headings</td></tr>
+      <tr><td>Warm Ivory on Soft Black</td><td>15.7 : 1</td><td>Text on dark sections</td></tr>
+      <tr><td>Muted Copper on Soft Black</td><td>5.1 : 1</td><td>Labels, numerals and accents on black</td></tr>
+      <tr><td>Muted Copper on Warm Ivory</td><td>3.0 : 1</td><td>Not for body or small text. Hairlines, marks and numerals 40 px and up only</td></tr>
+      <tr><td>Soft Black on Warm Stone</td><td>11.6 : 1</td><td>Text on stone sections</td></tr>
+    </tbody>
+  </table></div>
+</div></section>
+
+<section class="sec"><div class="wrap">
+  <h2>Typography</h2>
+  <p class="sub">Marcellus Regular for headings, Manrope Regular and Medium for text, buttons and navigation. Sizes are desktop / mobile.</p>
+  <div class="type-row"><div class="k">Hero display line<br>Marcellus 80 / 42, lh 1.04<br>visual only, not a heading</div><p class="display">Life after a setback can still be your own.</p></div>
+  <div class="type-row"><div class="k">Page H1<br>Marcellus 64 / 34, lh 1.06</div><p class="page-title">About Nandita</p></div>
+  <div class="type-row"><div class="k">Section H2<br>Marcellus 46 / 29, lh 1.12</div><p class="h2">I have had to rebuild more than once.</p></div>
+  <div class="type-row"><div class="k">H3<br>Marcellus 28 / 22, lh 1.25</div><p class="h3">Believing in yourself again</p></div>
+  <div class="type-row"><div class="k">Lede<br>Manrope 20 / 18, lh 1.6</div><p class="lede">I speak at women&rsquo;s events, community gatherings and company sessions.</p></div>
+  <div class="type-row"><div class="k">Body<br>Manrope 17–18 / 16–17, lh 1.65–1.75<br>max 700 px measure</div><p style="max-width:700px">Confidence can drop after one hard event or fade slowly over years. I talk about how self-belief goes missing and what a first step back can look like.</p></div>
+  <div class="type-row"><div class="k">Label<br>Manrope 600, 12, tracking 0.16em</div><p class="label">What I speak about</p></div>
+  <div class="type-row"><div class="k">Button / nav<br>Manrope 500, 15 / 14</div><p style="font:500 15px/1 var(--sans)">Invite Nandita to Speak</p></div>
+</div></section>
+
+<section class="sec"><div class="wrap">
+  <h2>Grid &amp; spacing</h2>
+  <p class="sub">12 columns on desktop (24 px gutter), 4 visual columns on mobile. Content max width 1440 px.</p>
+  <div class="gridviz" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
+  <div class="scroll-x" style="margin-top:40px"><table class="tokens">
+    <thead><tr><th>Token</th><th>Desktop ≥1024</th><th>Tablet 768–1023</th><th>Mobile 320–767</th></tr></thead>
+    <tbody>
+      <tr><td>Side padding</td><td>72 px</td><td>32 px</td><td>20 px</td></tr>
+      <tr><td>Section spacing</td><td>120 px</td><td>96 px</td><td>64 px</td></tr>
+      <tr><td>Column gutter</td><td>24 px</td><td>20 px</td><td>single column, 32 px row gap</td></tr>
+      <tr><td>Header height</td><td>88 px</td><td>88 px</td><td>68 px</td></tr>
+      <tr><td>Reading measure</td><td colspan="3">700 px</td></tr>
+      <tr><td>Buttons</td><td colspan="3">52 px tall (44 px compact in header), 2 px radius</td></tr>
+      <tr><td>Touch targets</td><td colspan="3">44 × 44 px minimum</td></tr>
+      <tr><td>Motion</td><td colspan="3">180–400 ms ease, fades and 8–16 px moves, none under reduced motion</td></tr>
+    </tbody>
+  </table></div>
+</div></section>
+
+<section class="sec"><div class="wrap">
+  <h2>Buttons &amp; links</h2>
+  <p class="sub">Square-cornered. The primary action is always worded &ldquo;Invite Nandita to Speak&rdquo; and links to Contact. A short copper stroke marks the main CTA.</p>
+  <div class="state-grid">
+    <div><p class="st-label">Primary · default</p><a class="btn" href="#">Invite Nandita to Speak</a></div>
+    <div><p class="st-label">Primary · hover</p><a class="btn is-hover" href="#">Invite Nandita to Speak</a></div>
+    <div><p class="st-label">Primary · keyboard focus</p><a class="btn is-focus" href="#">Invite Nandita to Speak</a></div>
+    <div><p class="st-label">Secondary</p><a class="btn btn--ghost" href="#">Load more posts</a></div>
+    <div><p class="st-label">Submitting / disabled</p><button class="btn is-disabled" type="button" disabled>Sending&hellip;</button></div>
+    <div><p class="st-label">Text link</p><a class="link" href="#">Read my story <span aria-hidden="true">&rarr;</span></a></div>
+  </div>
+  <div class="panel-dark" style="margin-top:40px">
+    <a class="btn btn--light" href="#">Invite Nandita to Speak</a>
+    <a class="btn btn--light is-hover" href="#">Hover</a>
+    <a class="btn btn--light btn--sm" href="#">Header compact</a>
+    <a class="link" href="#" style="color:var(--ivory)">Read my story <span aria-hidden="true">&rarr;</span></a>
+  </div>
+</div></section>
+
+<section class="sec"><div class="wrap">
+  <h2>Header</h2>
+  <p class="sub">Sticky, black, ivory logo. The CTA stays visible at every width; below 1024 px the menu collapses behind a 44 px button. The menu closes on Escape and returns focus to the button.</p>
+  <div class="frame-box static-header">
+    <header class="site-header"><div class="wrap"><a class="brand" href="#"><img src="../assets/logo-ivory.png" alt="Nandita Speaks" width="1073" height="753"></a><nav class="nav" aria-label="Demo"><a href="#" aria-current="page">Home</a><a href="#">About</a><a href="#">Speaking</a><a href="#">Silent Screams</a><a href="#">Blog</a><a href="#">Contact</a></nav><a class="btn btn--light btn--sm header-cta" href="#">Invite Nandita to Speak</a></div></header>
+  </div>
+  <div class="row" style="margin-top:32px">
+    <div><p class="st-label">Mobile · closed</p><div class="mobile-demo static-header"><header class="site-header"><div class="wrap"><a class="brand" href="#"><img src="../assets/logo-ivory.png" alt="Nandita Speaks" width="1073" height="753"></a><a class="btn btn--light btn--sm header-cta" href="#">Invite Nandita to Speak</a><button class="menu-btn" type="button" aria-label="Open menu"><span></span></button></div></header></div></div>
+    <div><p class="st-label">Mobile · menu open</p><div class="mobile-demo static-header"><header class="site-header"><div class="wrap"><a class="brand" href="#"><img src="../assets/logo-ivory.png" alt="Nandita Speaks" width="1073" height="753"></a><a class="btn btn--light btn--sm header-cta" href="#">Invite Nandita to Speak</a><button class="menu-btn" type="button" aria-label="Close menu" style="border-color:var(--copper)"><span style="box-shadow:none;transform:rotate(45deg)"></span></button></div></header>
+      <div class="mobile-menu"><div class="wrap"><a class="m-link" href="#" aria-current="page">Home<small>01</small></a><a class="m-link" href="#">About<small>02</small></a><a class="m-link" href="#">Speaking<small>03</small></a><a class="m-link" href="#">Silent Screams<small>04</small></a><a class="m-link" href="#">Blog<small>05</small></a><a class="m-link" href="#">Contact<small>06</small></a></div></div></div></div>
+  </div>
+</div></section>
+
+<section class="sec"><div class="wrap">
+  <h2>Form states</h2>
+  <p class="sub">Labels sit above fields. Errors are written as fixes, keep what was typed, and move focus to the first problem. Success replaces the form on the page; no reply time is promised until confirmed.</p>
+  <div class="state-grid">
+    <div><p class="st-label">Default</p><div class="field"><label for="d1">Name</label><input id="d1"></div></div>
+    <div><p class="st-label">Focus</p><div class="field"><label for="d2">Email</label><input id="d2" class="is-focus" value="priya@"></div></div>
+    <div><p class="st-label">Error</p><div class="field has-error"><label for="d3">Email</label><input id="d3" value="priya@" aria-invalid="true" aria-describedby="d3e"><span class="err" id="d3e">Enter an email address, like name@example.com.</span></div></div>
+    <div><p class="st-label">Optional field</p><div class="field"><label for="d4">Location, or online <span class="opt">(optional)</span></label><input id="d4" placeholder="e.g. Mumbai, or online"></div></div>
+    <div><p class="st-label">Textarea with limit</p><div class="field"><label for="d5">A brief note about what you need</label><textarea id="d5" style="min-height:120px"></textarea><span class="hint">Up to 2,000 characters.</span></div></div>
+    <div><p class="st-label">Sending</p><button class="btn is-disabled" type="button" disabled>Sending&hellip;</button><p class="spec">Button locks to stop duplicate submits.</p></div>
+  </div>
+  <div class="state-grid" style="margin-top:40px">
+    <div style="grid-column:span 2"><p class="st-label">Success</p><div class="on-ink" style="padding:40px;display:flex;flex-direction:column;gap:16px"><p class="h3">Thank you. Your enquiry has been sent.</p><p class="muted">A confirmation is on its way to your email.</p></div></div>
+    <div><p class="st-label">Server error (enquiry not saved)</p><div style="border:1px solid var(--error);padding:24px;color:var(--error);font-size:15px">Your enquiry could not be sent. Please try again in a moment. Everything you typed is still here.</div></div>
+  </div>
+</div></section>
+
+<section class="sec"><div class="wrap">
+  <h2>FAQ accordion</h2>
+  <p class="sub">Each question is a button inside an H3 with aria-expanded and a linked panel. Answers are in the page HTML for search engines.</p>
+  <div style="max-width:820px">
+    <div class="faq"><div class="faq-item"><h3><button type="button" aria-expanded="false" aria-controls="cfaq-1" id="cfaq-1-q"><span>Closed question, set in Marcellus</span><span class="faq-icon" aria-hidden="true"></span></button></h3><div class="faq-panel" id="cfaq-1" role="region" aria-labelledby="cfaq-1-q" hidden><p>Answer</p></div></div><div class="faq-item"><h3><button type="button" aria-expanded="true" aria-controls="cfaq-2" id="cfaq-2-q"><span>Open question</span><span class="faq-icon" aria-hidden="true"></span></button></h3><div class="faq-panel" id="cfaq-2" role="region" aria-labelledby="cfaq-2-q"><p>Answers sit in Manrope at a comfortable width, in muted text, with the plus turning to a minus.</p></div></div></div>
+  </div>
+</div></section>
+
+<section class="sec"><div class="wrap">
+  <h2>Cards, photo slots &amp; notes</h2>
+  <p class="sub">Article card (image, category, title, date, two-line excerpt). Photo slots hold the crop and ratio until real photographs arrive; no stock or AI portraits. Dashed copper notes are design annotations and are not built.</p>
+  <div class="cards">
+    <a class="card" href="#"><figure class="ph" style="aspect-ratio:4 / 3;" role="img" aria-label="Post image"><img class="ph-mark" src="../assets/mark-copper.png" alt="" width="949" height="569"><figcaption><b>Post image</b>Post image, 4:3</figcaption></figure><div class="meta"><span>Category</span><time>Publish date</time></div><h3>Post title, up to two lines</h3><p>Two-line excerpt, cut off with an ellipsis after the second line so cards stay the same height.</p></a>
+    <div><figure class="ph" style="aspect-ratio:4 / 5;" role="img" aria-label="Photo slot · light"><img class="ph-mark" src="../assets/mark-copper.png" alt="" width="949" height="569"><figcaption><b>Photo slot · light</b>Portrait 4:5 on ivory</figcaption></figure></div>
+    <div><figure class="ph ph--dark ph--video" style="aspect-ratio:4 / 5;" role="img" aria-label="Video slot · dark"><span class="play" aria-hidden="true"></span><figcaption><b>Video slot · dark</b>Video slot, 16:9, loads on click</figcaption></figure></div>
+  </div>
+  <div style="margin-top:32px"><p class="note"><b>Design note</b><span>Annotation style used across the frames for hidden, pending or proposed content.</span></p></div>
+</div></section>
+
+<section class="sec" style="border-bottom:0;padding-bottom:0"><div class="wrap"><h2>CTA band</h2><p class="sub">Closes every page. One line and the primary CTA.</p></div></section>
+
+<section class="cta-band" aria-labelledby="cta-h">
+  <div class="wrap">
+    <div class="stack" style="gap:22px">
+      <img class="cta-mark" src="../assets/mark-copper.png" alt="" width="949" height="569" style="margin-bottom:6px">
+      <h2 id="cta-h" class="page-title" style="max-width:12em">Invite Nandita to speak</h2>
+      <p class="lede muted" style="max-width:30em">Planning an event for women, or a session for your team?</p>
+    </div>
+    <a class="btn btn--light" href="contact.html" data-cta="band">Invite Nandita to Speak</a>
+  </div>
+</section>
+
+</main>
+
+
+<script>
+(function () {
+  // Preview modes: #public hides notes and hidden sections; #static turns off reveal motion (for Figma import)
+  function mode() { var r = document.documentElement; r.classList.toggle('is-public', /public/.test(location.hash)); r.classList.toggle('is-static', /static/.test(location.hash)); }
+  mode(); window.addEventListener('hashchange', mode);
+  var still = /static/.test(location.hash) || window.matchMedia('(prefers-reduced-motion: reduce)').matches || window.self !== window.top;
+  if (!still && 'IntersectionObserver' in window) {
+    var els = [].slice.call(document.querySelectorAll('main section, main .reveal'));
+    var vh = window.innerHeight;
+    var io = new IntersectionObserver(function (es) { es.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }); }, { rootMargin: '0px 0px -8% 0px' });
+    els.forEach(function (el) { if (el.getBoundingClientRect().top > vh) { el.classList.add('rv'); io.observe(el); } });
+    document.documentElement.classList.add('js-reveal');
+  }
+  var y = document.querySelectorAll('[data-year]'); for (var i = 0; i < y.length; i++) y[i].textContent = new Date().getFullYear();
+  // Mobile menu: toggle, Escape to close, focus restoration
+  var btn = document.querySelector('.menu-btn'), menu = document.getElementById('mobile-menu');
+  function setMenu(open) {
+    if (!btn || !menu) return;
+    btn.setAttribute('aria-expanded', String(open)); btn.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+    menu.hidden = !open; document.body.style.overflow = open ? 'hidden' : '';
+    if (open) { var f = menu.querySelector('a'); f && f.focus(); } else { btn.focus(); }
+  }
+  btn && btn.addEventListener('click', function () { setMenu(btn.getAttribute('aria-expanded') !== 'true'); });
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && btn && btn.getAttribute('aria-expanded') === 'true') setMenu(false); });
+  // FAQ accordion: buttons inside H3, aria-expanded + controlled panel
+  var qs = document.querySelectorAll('.faq-item button');
+  for (var j = 0; j < qs.length; j++) qs[j].addEventListener('click', function () {
+    var open = this.getAttribute('aria-expanded') === 'true';
+    this.setAttribute('aria-expanded', String(!open));
+    document.getElementById(this.getAttribute('aria-controls')).hidden = open;
+  });
+})();
+</script>
+</body>
+</html>

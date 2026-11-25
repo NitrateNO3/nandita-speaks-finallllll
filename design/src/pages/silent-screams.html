@@ -1,0 +1,55 @@
+<!-- title: Silent Screams by Nandita Thakur | active: book | page: Silent Screams -->
+<style>
+  /* Silent Screams: the literary page. Centred like a title page, the cover is the hero object. */
+  .b-head { background: var(--stone); text-align: center; }
+  .b-head .wrap { padding-block: 96px 0; display: flex; flex-direction: column; align-items: center; gap: 22px; }
+  .b-head .by { font-size: 13px; letter-spacing: .2em; text-transform: uppercase; font-weight: 600; color: var(--copper-deep); }
+  .b-head h1 { font-size: clamp(52px, 8vw, 120px); line-height: .95; letter-spacing: -.015em; }
+  .b-head .desc { max-width: 30em; font-size: 19px; }
+  .b-head .cover { width: min(340px, 70%); margin-top: 40px; margin-bottom: -180px; position: relative; z-index: 1; }
+  .b-head .cover .ph { box-shadow: 0 30px 60px -20px rgba(23,23,23,.45); }
+  @media (max-width: 767px) { .b-head .wrap { padding-block: 56px 0; } .b-head .cover { margin-bottom: -120px; } }
+  .why { padding-block: 260px 120px; }
+  @media (max-width: 767px) { .why { padding-block: 176px 72px; } }
+  .why .grid2 { display: grid; grid-template-columns: repeat(12, minmax(0,1fr)); column-gap: 24px; row-gap: 32px; }
+  .why h2 { grid-column: 2 / span 4; }
+  .why .prose { grid-column: 7 / span 5; }
+  .why .prose p:first-child { font-family: var(--display); font-size: clamp(24px, 2.2vw, 32px); line-height: 1.35; }
+  @media (max-width: 767px) { .why .grid2 { grid-template-columns: 1fr; } .why .grid2 > * { grid-column: 1 !important; } }
+  .buy { border-block: 1px solid var(--ink); padding-block: 44px; display: grid; grid-template-columns: minmax(0,1fr) auto; gap: 24px 48px; align-items: center; }
+  @media (max-width: 767px) { .buy { grid-template-columns: 1fr; } }
+</style>
+
+<section class="b-head" aria-labelledby="bk-h1">
+  <div class="wrap load-in">
+    <p class="by">A book by Nandita Thakur</p>
+    <h1 id="bk-h1"><i style="font-style:normal">Silent Screams</i></h1>
+    <p class="desc"><span class="pending">short approved description of the book (Silent Screams page copy not yet supplied)</span></p>
+    <div class="cover">{{py: ph("Supplied cover artwork only", "Book cover", ratio="2 / 3", alt="Silent Screams book cover by Nandita Thakur")}}</div>
+  </div>
+</section>
+
+<section class="why" aria-labelledby="why-h">
+  <div class="wrap grid2">
+    <h2 id="why-h" class="sr">Why I wrote it</h2>
+    <div class="prose">
+      <p>I wrote <i>Silent Screams</i> to put difficult experiences into words and to find some closure.</p>
+      <p>Writing it is part of why I can speak openly about hard experiences today.</p>
+      <p class="note small"><b>Copy</b><span>These two sentences are approved copy from the Home and About pages. The Silent Screams page copy, including the heading wording, is still to come. The extra sentence on the current site about the book&rsquo;s themes is not in the Page Copy and has been removed.</span></p>
+    </div>
+  </div>
+</section>
+
+<div class="hidden-section"><div class="wrap"><p class="note"><b>Hidden section</b><span>About the book: the approved synopsis at a 700 px reading width. Hidden until the client supplies it.</span></p></div></div>
+
+<section class="band" aria-labelledby="buy-h" data-preview-only>
+  <div class="wrap">
+    <div class="buy">
+      <div class="stack" style="gap:10px"><h2 id="buy-h">Where to buy</h2><p class="muted">Opens the retailer&rsquo;s page in a new tab.</p></div>
+      <a class="btn" href="#buy-h" target="_blank" rel="noopener noreferrer" data-event="book_link_click">Buy the Book</a>
+    </div>
+    <p class="note small" style="margin-top:20px"><b>Hidden for now</b><span>The current site links to an Amazon India eBook listing. The PRD lists the purchase link as pending, so this block stays hidden until the client confirms the link.</span></p>
+  </div>
+</section>
+
+{{py: cta_band("Planning an event for women, or a session for your team? Tell me the date, the audience and what you have in mind.")}}

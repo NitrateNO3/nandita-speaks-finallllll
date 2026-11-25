@@ -1,0 +1,70 @@
+<!-- title: Blog | Nandita Thakur | active: blog | page: Blog -->
+<style>
+  /* Blog: the journal. Masthead-style head, one large featured story, then a calm three-column index. */
+  .masthead .wrap { padding-block: 88px 40px; display: grid; grid-template-columns: repeat(12, minmax(0,1fr)); column-gap: 24px; row-gap: 24px; align-items: end; border-bottom: 1px solid var(--ink); }
+  .masthead h1 { grid-column: 1 / span 6; font-size: clamp(56px, 9vw, 132px); line-height: .9; letter-spacing: -.02em; }
+  .masthead .intro { grid-column: 8 / -1; padding-bottom: 14px; }
+  @media (max-width: 767px) { .masthead .wrap { grid-template-columns: 1fr; padding-block: 48px 28px; } .masthead .wrap > * { grid-column: 1 !important; } }
+  .featured { display: grid; grid-template-columns: repeat(12, minmax(0,1fr)); column-gap: 24px; row-gap: 24px; text-decoration: none; padding-block: 56px; align-items: center; }
+  .featured .ph { grid-column: 1 / span 7; }
+  .featured .ft { grid-column: 9 / -1; display: flex; flex-direction: column; gap: 18px; }
+  .featured .meta { display: flex; gap: 12px; font-size: 12px; letter-spacing: .14em; text-transform: uppercase; font-weight: 600; color: var(--copper-deep); }
+  .featured .meta time { color: var(--muted); font-weight: 500; }
+  .featured:hover h2 { text-decoration: underline; text-decoration-color: var(--copper); text-underline-offset: 8px; text-decoration-thickness: 1px; }
+  @media (max-width: 767px) { .featured { grid-template-columns: 1fr; padding-block: 36px; } .featured > * { grid-column: 1 !important; } }
+  .filters { display: flex; gap: 8px; flex-wrap: wrap; }
+  .chip { min-height: 44px; padding: 0 18px; display: inline-flex; align-items: center; border: 1px solid rgba(23,23,23,.28); border-radius: var(--radius); font: 500 14px/1 var(--sans); background: transparent; color: var(--ink); cursor: pointer; white-space: nowrap; }
+  .chip:hover { border-color: var(--ink); }
+  .chip[aria-pressed="true"] { background: var(--ink); color: var(--ivory); border-color: var(--ink); }
+  @media (max-width: 767px) { .filters { flex-wrap: nowrap; overflow-x: auto; margin-inline: calc(-1 * var(--pad)); padding-inline: var(--pad); scrollbar-width: none; } }
+</style>
+
+<section class="masthead" aria-labelledby="bl-h1">
+  <div class="wrap load-in">
+    <h1 id="bl-h1">Blog</h1>
+    <div class="intro stack" style="gap:14px">
+      <p class="lede muted"><span class="pending">one-line introduction (Blog page copy not yet supplied)</span></p>
+      <p class="note small"><b>Launch rule</b><span>The blog does not launch empty. The client supplies the first posts before launch. Every card here shows layout only.</span></p>
+    </div>
+  </div>
+</section>
+
+<section aria-label="Featured post">
+  <div class="wrap">
+    <a class="featured" href="article.html">
+      {{py: ph("Featured image of the latest or chosen post, 3:2", "Featured image", ratio="3 / 2")}}
+      <div class="ft">
+        <div class="meta"><span>Category</span><time>Date</time></div>
+        <h2>Featured post title, set large, up to three lines</h2>
+        <p class="muted">Short excerpt written for the post in the CMS, around two sentences.</p>
+        <span class="link" style="align-self:flex-start">Read More <span aria-hidden="true">&rarr;</span></span>
+      </div>
+    </a>
+  </div>
+</section>
+
+<section class="band on-stone" aria-labelledby="all-h">
+  <div class="wrap stack" style="gap:40px">
+    <div style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:end;gap:24px">
+      <h2 id="all-h" class="h3">All posts</h2>
+      <div class="filters" role="group" aria-label="Filter posts by category">
+        <button class="chip" type="button" aria-pressed="true">All</button>
+        <button class="chip" type="button" aria-pressed="false">Believing in Yourself</button>
+        <button class="chip" type="button" aria-pressed="false">Identity and Interests</button>
+        <button class="chip" type="button" aria-pressed="false">Independence</button>
+        <button class="chip" type="button" aria-pressed="false">Uncertainty and Starting Again</button>
+        <button class="chip" type="button" aria-pressed="false">Enjoying Life</button>
+      </div>
+    </div>
+    <div class="cards">
+      {{py: "".join('<a class="card" href="article.html">' + ph("Post image, 4:3", "Post image", ratio="4 / 3") + '<div class="meta"><span>Category</span><time>Date</time></div><h3>Post title, set in Marcellus, up to two lines</h3><p>Two-line excerpt in Manrope, cut off after the second line so the cards stay the same height.</p></a>' for _ in range(6))}}
+    </div>
+    <div style="display:flex;justify-content:center"><button class="btn btn--ghost" type="button">Load more posts</button></div>
+    <p class="note small"><b>Rule</b><span>Nine posts per page, then Load More. Categories are the Brief&rsquo;s proposals and are editable in the CMS.</span></p>
+  </div>
+</section>
+
+{{py: cta_band("Planning an event for women, or a session for your team? Tell me the date, the audience and what you have in mind.")}}
+<script>
+  document.querySelectorAll('.chip').forEach(function (c) { c.addEventListener('click', function () { document.querySelectorAll('.chip').forEach(function (x) { x.setAttribute('aria-pressed', String(x === c)); }); }); });
+</script>

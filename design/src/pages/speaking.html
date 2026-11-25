@@ -1,0 +1,204 @@
+<!-- title: Speaker for Women's Events | Keynotes by Nandita Thakur | active: speaking | page: Speaking -->
+<style>
+  /* Speaking: the organiser's page. Structured like an event programme: index, sections, a bio to copy. */
+  .s-head { background: var(--ink); color: var(--ivory); }
+  .s-head .wrap { padding-block: 96px 0; }
+  .s-head-grid { display: grid; grid-template-columns: repeat(12, minmax(0,1fr)); column-gap: 24px; row-gap: 40px; }
+  .s-head .t { grid-column: 1 / span 8; display: flex; flex-direction: column; gap: 28px; padding-bottom: 88px; }
+  .s-head h1 { font-size: clamp(40px, 5.4vw, 80px); line-height: 1.02; letter-spacing: -.01em; max-width: 11em; }
+  .s-head .lede { color: var(--muted-dark); max-width: 36em; }
+  .index { grid-column: 10 / -1; align-self: end; padding-bottom: 88px; }
+  .index p { font-size: 12px; letter-spacing: .16em; text-transform: uppercase; font-weight: 600; color: var(--copper); margin-bottom: 12px; }
+  .index ol { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--line-dark); counter-reset: i; }
+  .index li { counter-increment: i; border-bottom: 1px solid var(--line-dark); }
+  .index a { display: grid; grid-template-columns: 32px 1fr; padding: 13px 0; text-decoration: none; font-size: 15px; color: var(--muted-dark); }
+  .index a::before { content: counter(i, decimal-leading-zero); color: var(--copper); font-size: 12px; padding-top: 3px; }
+  .index a:hover { color: var(--ivory); }
+  @media (max-width: 1023px) { .s-head .t { grid-column: 1 / -1; padding-bottom: 0; } .index { grid-column: 1 / span 8; padding-bottom: 72px; } }
+  @media (max-width: 767px) { .s-head .wrap { padding-block: 48px 0; } .s-head-grid { grid-template-columns: 1fr; } .s-head-grid > * { grid-column: 1 !important; } .index { padding-bottom: 56px; } }
+
+  .who { display: grid; grid-template-columns: repeat(12, minmax(0,1fr)); column-gap: 24px; }
+  .who > h2 { grid-column: 1 / -1; margin-bottom: 56px; }
+  .aud-row { grid-column: 1 / -1; display: grid; grid-template-columns: repeat(12, minmax(0,1fr)); column-gap: 24px; padding-block: 48px 56px; border-top: 1px solid var(--ink); scroll-margin-top: calc(var(--header-h) + 24px); }
+  .aud-row + .aud-row { border-top-color: var(--line); }
+  .aud-row h3 { grid-column: 1 / span 4; font-size: clamp(24px, 2.3vw, 32px); }
+  .aud-row .body { grid-column: 6 / span 6; display: flex; flex-direction: column; gap: 18px; }
+  .aud-row .body p:first-child { font-size: 20px; line-height: 1.6; }
+  .aud-row .body p + p { color: var(--muted); }
+  @media (max-width: 767px) { .who, .aud-row { grid-template-columns: 1fr; row-gap: 18px; } .who > *, .aud-row > * { grid-column: 1 !important; } .who > h2 { margin-bottom: 24px; } .aud-row { padding-block: 32px 40px; } }
+
+  .t-table { border-top: 1px solid var(--ink); margin-top: 48px; }
+  .t-row { display: grid; grid-template-columns: 80px minmax(0, 4fr) minmax(0, 6fr); gap: 24px; padding: 30px 0; border-bottom: 1px solid rgba(23,23,23,.2); align-items: baseline; }
+  .t-row .n { font-family: var(--display); font-size: 30px; color: var(--copper-deep); }
+  .t-row p { color: var(--muted); }
+  @media (max-width: 767px) { .t-row { grid-template-columns: 40px minmax(0,1fr); gap: 10px 14px; } .t-row .n { font-size: 22px; } .t-row p { grid-column: 2; } }
+
+  .talks-head { display: grid; grid-template-columns: repeat(12, minmax(0,1fr)); column-gap: 24px; row-gap: 20px; align-items: end; margin-bottom: 56px; }
+  .talks-head h2 { grid-column: 1 / span 6; }
+  .talks-head p { grid-column: 8 / -1; color: var(--muted-dark); }
+  .talk { display: grid; grid-template-columns: repeat(12, minmax(0,1fr)); column-gap: 24px; row-gap: 20px; padding-block: 48px; border-top: 1px solid var(--line-dark); }
+  .talk:first-of-type { border-top-color: var(--ivory); }
+  .talk h3 { grid-column: 1 / span 5; font-size: clamp(26px, 2.6vw, 38px); line-height: 1.15; }
+  .talk .desc { grid-column: 6 / span 4; color: var(--muted-dark); font-size: 16px; }
+  .talk .qs { grid-column: 10 / -1; }
+  .talk .qs p { font-size: 11px; letter-spacing: .16em; text-transform: uppercase; font-weight: 600; color: var(--copper); margin-bottom: 12px; }
+  .talk ul { margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 12px; }
+  .talk li { font-size: 15px; line-height: 1.5; padding-left: 18px; position: relative; }
+  .talk li::before { content: ""; position: absolute; left: 0; top: .72em; width: 9px; height: 1px; background: var(--copper); }
+  @media (max-width: 1023px) { .talk h3 { grid-column: 1 / -1; } .talk .desc { grid-column: 1 / span 7; } .talk .qs { grid-column: 8 / -1; } }
+  @media (max-width: 767px) { .talks-head, .talk { grid-template-columns: 1fr; } .talks-head > *, .talk > * { grid-column: 1 !important; } .talk { padding-block: 36px; } }
+
+  .bio { display: grid; grid-template-columns: repeat(12, minmax(0,1fr)); column-gap: 24px; row-gap: 32px; align-items: start; }
+  .bio .h { grid-column: 1 / span 4; display: flex; flex-direction: column; gap: 18px; }
+  .bio .card-bio { grid-column: 6 / -1; background: var(--ivory); padding: 44px 48px; border-top: 2px solid var(--ink); }
+  .bio .card-bio p.txt { font-family: var(--display); font-size: clamp(20px, 1.8vw, 25px); line-height: 1.5; }
+  .bio .tools { display: flex; flex-wrap: wrap; gap: 16px 24px; align-items: center; margin-top: 28px; padding-top: 20px; border-top: 1px solid var(--line); }
+  @media (max-width: 767px) { .bio { grid-template-columns: 1fr; } .bio > * { grid-column: 1 !important; } .bio .card-bio { padding: 28px 22px; } }
+
+  .spoken { display: grid; grid-template-columns: repeat(12, minmax(0,1fr)); column-gap: 24px; row-gap: 16px; align-items: baseline; }
+  .spoken h2 { grid-column: 1 / span 4; font-size: clamp(24px, 2vw, 30px); }
+  .spoken .stmt { grid-column: 6 / -1; font-family: var(--display); font-size: clamp(26px, 2.8vw, 40px); line-height: 1.2; }
+  @media (max-width: 767px) { .spoken { grid-template-columns: 1fr; } .spoken > * { grid-column: 1 !important; } }
+
+  .faq-grid { display: grid; grid-template-columns: repeat(12, minmax(0,1fr)); column-gap: 24px; row-gap: 32px; }
+  .faq-grid .faq-head { grid-column: 1 / span 4; } .faq-grid .faq-body { grid-column: 6 / -1; }
+  @media (max-width: 767px) { .faq-grid { grid-template-columns: 1fr; } .faq-grid > * { grid-column: 1 !important; } }
+</style>
+
+<section class="s-head" aria-labelledby="sp-h1">
+  <div class="wrap">
+    <div class="s-head-grid">
+      <div class="t load-in">
+        <h1 id="sp-h1">Keynotes and Talks for Women&rsquo;s Events</h1>
+        <p class="lede">I speak at women&rsquo;s events, community gatherings and company sessions about rebuilding self-belief after life&rsquo;s setbacks. My talks come from my own experience, told honestly, with a few questions for the audience to take home.</p>
+        <div class="actions"><a class="btn btn--light" href="contact.html">Invite Nandita to Speak</a></div>
+      </div>
+      <nav class="index" aria-label="On this page">
+        <p>On this page</p>
+        <ol>
+          <li><a href="#women">Women&rsquo;s communities and events</a></li>
+          <li><a href="#companies">Companies and teams</a></li>
+          <li><a href="#themes">What I speak about</a></li>
+          <li data-preview-only><a href="#talks">Talk ideas</a></li>
+          <li><a href="#bio">Bio for your programme</a></li>
+          <li><a href="#faq">Questions organisers ask</a></li>
+        </ol>
+      </nav>
+    </div>
+  </div>
+</section>
+
+<section class="band" aria-labelledby="who-h">
+  <div class="wrap who">
+    <h2 id="who-h" class="sr">Who I speak to</h2>
+    <div class="aud-row" id="women">
+      <h3>For women&rsquo;s communities and events</h3>
+      <div class="body">
+        <p>I speak at International Women&rsquo;s Day sessions, women&rsquo;s network meetings, association and community gatherings, and conferences for women. <span class="pending">confirm event types with Nandita</span></p>
+        <p>Some of the women in the room will have been through a major setback. Others will have spent years meeting everyone else&rsquo;s expectations and slowly lost confidence in themselves. My life will not match every woman&rsquo;s, and I do not tell anyone what to decide. I share what happened to me and ask questions.</p>
+      </div>
+    </div>
+    <div class="aud-row" id="companies">
+      <h3>For companies and teams</h3>
+      <div class="body">
+        <p>I also speak to teams and middle managers about rebuilding self-belief after a setback, making your own decisions and keeping a life of your own outside work. The audience can be women only or a mixed group. These are talks that start a conversation. I do not run a leadership programme.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="band on-stone" id="themes" aria-labelledby="th-h">
+  <div class="wrap">
+    <h2 id="th-h" class="sr">What I speak about</h2>
+    <div class="t-table">
+      <div class="t-row"><span class="n" aria-hidden="true">01</span><h3>Believing in yourself again</h3><p>Confidence can drop after a major setback, or fade slowly over years of putting other people first. I talk about how that happens and what a first step back can look like.</p></div>
+      <div class="t-row"><span class="n" aria-hidden="true">02</span><h3>Having an identity of your own</h3><p>Family and work can take over every hour of the day. I talk about keeping a few interests that belong only to you, and why they matter.</p></div>
+      <div class="t-row"><span class="n" aria-hidden="true">03</span><h3>Building independence</h3><p>Earning my own money gave me the freedom to make my own decisions. I share what that was like for me. It is my own experience and not financial advice.</p></div>
+      <div class="t-row"><span class="n" aria-hidden="true">04</span><h3>Living through uncertainty</h3><p>I looked after both my parents through cancer and then had cancer myself. I talk about what it is like when plans change and what I did next.</p></div>
+      <div class="t-row"><span class="n" aria-hidden="true">05</span><h3>Finding enjoyment again</h3><p>I kept singing through chemotherapy. I talk about making room for music, laughter and ordinary pleasures even when life is hard.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="band on-ink" id="talks" aria-labelledby="tk-h" data-preview-only>
+  <div class="wrap">
+    <div class="talks-head">
+      <h2 id="tk-h" class="sr">Talk ideas for your event</h2>
+      <p>Each talk can be a keynote or a shorter session. <span class="pending">confirm lengths</span></p>
+    </div>
+    <p class="note small" style="margin-bottom:40px"><b>Not public yet</b><span>The three talk titles are proposals for Nandita to review. This whole section stays hidden until she approves them.</span></p>
+    <article class="talk">
+      <h3>What Do I Do With My Life Now?</h3>
+      <p class="desc">Many women reach a point where they are no longer sure what they want or what they can do. It can come after a major setback or after years of meeting everyone else&rsquo;s expectations. In this talk I share how I had to rebuild parts of my own life more than once, and what I did next.</p>
+      <div class="qs"><p>Questions the audience takes home</p><ul><li>What has happened to my belief in myself?</li><li>What is one decision I can begin making for myself?</li><li>What is a next step that feels manageable?</li></ul></div>
+    </article>
+    <article class="talk">
+      <h3>Silent Screams: The Courage to Reclaim Your Life</h3>
+      <p class="desc">This talk draws on the themes of my book, <i>Silent Screams</i>: independence, having an identity of your own and making your own decisions. I talk about earning my own money, what that changed for me and why I value a life of my own alongside family responsibilities.</p>
+      <div class="qs"><p>Questions the audience takes home</p><ul><li>What would help me feel more independent?</li><li>Which interest have I stopped making time for?</li></ul></div>
+    </article>
+    <article class="talk">
+      <h3>Still Singing: Keeping Something of Your Own When Life Gets Hard</h3>
+      <p class="desc">I carried on with my music classes and kept singing through chemotherapy. This talk uses that experience to talk about living through uncertainty, keeping a little room for what you enjoy and finding something to laugh about when things go wrong.</p>
+      <div class="qs"><p>Questions the audience takes home</p><ul><li>What is only mine, and how could I make room for it in a hard stretch?</li><li>People cope in different ways, so what works for me?</li></ul></div>
+    </article>
+    <p class="lede" style="margin-top:40px;color:var(--muted-dark);max-width:36em">Any of these can be shaped to your audience and event. Tell me what you have in mind and we can talk it through. <span class="pending">confirm with Nandita</span></p>
+  </div>
+</section>
+
+<div class="hidden-section"><div class="wrap"><p class="note"><b>Hidden section</b><span>Session details: length, format (in person, online or both), languages, where Nandita is based and travels, time for audience questions. Shown as a five-row list once every detail is confirmed.</span></p></div></div>
+
+<section class="band on-stone" id="bio" aria-labelledby="bio-h">
+  <div class="wrap bio">
+    <div class="h">
+      <h2 id="bio-h" class="sr">Bio for your event programme</h2>
+      <p class="muted">Please use this short bio in your programme or event listing.</p>
+      <p class="note small"><b>Approval</b><span>Nandita approves the bio wording before it goes live. The high-resolution photo link stays hidden until photos are supplied.</span></p>
+    </div>
+    <div class="card-bio">
+      <p class="txt" id="bio-text">Nandita Thakur is a motivational speaker for women, an entrepreneur and the author of <i>Silent Screams</i>. She speaks about rebuilding belief in yourself after life&rsquo;s setbacks, drawing on her own experience of building a working life of her own, caring for her parents through cancer and keeping up her music while she was in treatment herself.</p>
+      <div class="tools">
+        <button class="btn btn--ghost btn--sm" type="button" id="copy-bio">Copy bio</button>
+        <span class="small muted" id="copy-status" role="status"></span>
+        <span class="pending" data-preview-only>Download high-resolution photos</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="band" aria-labelledby="spoken-h">
+  <div class="wrap spoken">
+    <h2 id="spoken-h">Where I have spoken</h2>
+    <p class="stmt">I have spoken at sessions for cancer patients.</p>
+  </div>
+</section>
+
+<section class="band on-stone" id="faq" aria-labelledby="faq-h">
+  <div class="wrap faq-grid">
+    <div class="faq-head sr"><h2 id="faq-h">Questions organisers ask</h2></div>
+    <div class="faq-body">
+      {{py: faq([
+        ("What does Nandita speak about at women&rsquo;s events?", "She speaks about rebuilding belief in yourself after life&rsquo;s setbacks, and about having an identity of your own, building independence, living through uncertainty and finding enjoyment again. She talks from her own experience and leaves the audience with a few questions to think about."),
+        ("Does Nandita speak at company events?", "Yes. She speaks at events organised for women inside companies, and to teams and middle managers about self-belief and keeping a life of your own outside work. The audience can be women only or a mixed group."),
+        ("What will the audience take away?", "A few questions to think about, such as which decision they could start making for themselves and what next step feels manageable. Nandita shares her own experience. She is not a therapist or a financial adviser, and her talks do not promise a particular result."),
+        ("What should I include in my enquiry?", "The date or approximate timing, the audience and its size, the location or whether it is online, and what you have in mind. You do not need to book a call first."),
+      ], "sfaq")}}
+      <p class="note small" style="margin-top:24px"><b>Later</b><span>Shaping the talk, format, length, fees and workshops are added once Nandita confirms the draft answers.</span></p>
+    </div>
+  </div>
+</section>
+
+{{py: cta_band("Tell me the date, the audience and what you have in mind.", extra='<p class="pending" style="align-self:flex-start">+ reply time &middot; + speaker profile PDF link</p>')}}
+
+<script>
+  (function () {
+    var b = document.getElementById('copy-bio'), s = document.getElementById('copy-status');
+    if (!b) return;
+    b.addEventListener('click', function () {
+      var t = document.getElementById('bio-text').innerText;
+      var done = function () { s.textContent = 'Bio copied.'; };
+      var fallback = function () { var r = document.createRange(); r.selectNodeContents(document.getElementById('bio-text')); var sel = getSelection(); sel.removeAllRanges(); sel.addRange(r); s.textContent = 'Bio selected. Press Ctrl+C or Cmd+C to copy.'; };
+      if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(t).then(done, fallback); else fallback();
+    });
+  })();
+</script>

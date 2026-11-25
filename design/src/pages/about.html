@@ -1,0 +1,139 @@
+<!-- title: About Nandita Thakur | Speaker, Entrepreneur and Author | active: about | page: About -->
+<style>
+  /* About: the quiet, personal page. Opens on ivory, reads like a long-form magazine profile. */
+  .a-head .wrap { padding-block: 88px 0; }
+  .a-head-grid { display: grid; grid-template-columns: repeat(12, minmax(0,1fr)); column-gap: 24px; row-gap: 48px; align-items: end; }
+  .a-head .t { grid-column: 1 / span 7; display: flex; flex-direction: column; gap: 28px; padding-bottom: 8px; }
+  .a-head h1 { font-size: clamp(42px, 6vw, 88px); line-height: 1; letter-spacing: -.012em; }
+  .a-head .portrait { grid-column: 9 / -1; grid-row: 1 / span 2; align-self: start; position: relative; z-index: 1; margin-bottom: 88px; }
+  .a-head .facts-wrap { grid-column: 1 / span 7; padding-bottom: 88px; }
+  .a-head .facts-wrap h2 { font-family: var(--sans); font-size: 12px; letter-spacing: .16em; text-transform: uppercase; font-weight: 600; color: var(--copper-deep); margin-bottom: 14px; }
+  @media (max-width: 1023px) { .a-head .t, .a-head .facts-wrap { grid-column: 1 / span 7; padding-bottom: 88px; } .a-head .portrait { grid-column: 8 / -1; margin-bottom: 72px; } }
+  @media (max-width: 767px) { .a-head .wrap { padding-block: 48px 0; } .a-head-grid { grid-template-columns: 1fr; row-gap: 36px; } .a-head-grid > * { grid-column: 1 !important; grid-row: auto !important; } .a-head .portrait { margin-bottom: 0; max-width: 86%; } }
+
+  .story { background: var(--ivory); }
+  .story .wrap { padding-block: 120px; }
+  @media (max-width: 1023px) { .story .wrap { padding-block: 96px; } }
+  @media (max-width: 767px) { .story .wrap { padding-block: 64px; } }
+  .flow { display: grid; grid-template-columns: repeat(12, minmax(0,1fr)); column-gap: 24px; row-gap: 72px; }
+  .flow .col { grid-column: 3 / span 7; display: flex; flex-direction: column; gap: 1.2em; }
+  .flow .col p { font-size: 19px; line-height: 1.8; }
+  .flow h2 { font-size: clamp(32px, 3.6vw, 52px); margin-bottom: .4em; }
+  .flow .col p.first { font-family: var(--display); font-size: clamp(24px, 2.3vw, 32px); line-height: 1.4; }
+  .flow .pair { grid-column: 1 / -1; display: grid; grid-template-columns: repeat(12, minmax(0,1fr)); column-gap: 24px; align-items: end; }
+  .flow .pair .a { grid-column: 1 / span 7; } .flow .pair .b { grid-column: 9 / span 4; }
+  .flow .solo { grid-column: 7 / -1; }
+  @media (max-width: 1023px) { .flow .col { grid-column: 2 / span 10; } }
+  @media (max-width: 767px) { .flow, .flow .pair { grid-template-columns: 1fr; row-gap: 40px; } .flow > *, .flow .pair > * { grid-column: 1 !important; } .flow .col p { font-size: 17px; } .flow .pair .b { max-width: 70%; justify-self: end; } }
+
+  .now { display: grid; grid-template-columns: repeat(12, minmax(0,1fr)); column-gap: 24px; row-gap: 40px; }
+  .now > h2 { grid-column: 1 / span 4; }
+  .now .cols { grid-column: 5 / -1; display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); border-top: 1px solid var(--ink); }
+  .now .cols > div { padding: 30px 32px 0 0; display: flex; flex-direction: column; gap: 14px; min-width: 0; }
+  .now .cols > div + div { padding-left: 32px; border-left: 1px solid rgba(23,23,23,.25); }
+  @media (max-width: 1023px) { .now > h2, .now .cols { grid-column: 1 / -1; } }
+  @media (max-width: 767px) { .now { grid-template-columns: 1fr; } .now .cols { grid-template-columns: 1fr; } .now .cols > div, .now .cols > div + div { padding: 26px 0; border-left: 0; } .now .cols > div + div { border-top: 1px solid rgba(23,23,23,.25); } }
+
+  .believe .wrap { padding-block: 128px; }
+  .believe h2 { font-family: var(--sans); font-size: 12px; letter-spacing: .16em; text-transform: uppercase; font-weight: 600; color: var(--copper); margin-bottom: 40px; }
+  .believe ol { list-style: none; margin: 0; padding: 0; counter-reset: b; }
+  .believe li { counter-increment: b; display: grid; grid-template-columns: 80px minmax(0,1fr); gap: 24px; padding: 28px 0; border-top: 1px solid var(--line-dark); font-family: var(--display); font-size: clamp(26px, 3vw, 44px); line-height: 1.2; }
+  .believe li::before { content: counter(b, upper-roman); font-family: var(--sans); font-size: 13px; letter-spacing: .14em; color: var(--copper); padding-top: 14px; }
+  .believe li:nth-child(even) { padding-left: 8%; }
+  @media (max-width: 767px) { .believe .wrap { padding-block: 72px; } .believe li { grid-template-columns: 40px minmax(0,1fr); } .believe li:nth-child(even) { padding-left: 0; } }
+
+  .faq-grid { display: grid; grid-template-columns: repeat(12, minmax(0,1fr)); column-gap: 24px; row-gap: 32px; }
+  .faq-grid .faq-head { grid-column: 1 / span 4; } .faq-grid .faq-body { grid-column: 6 / -1; }
+  @media (max-width: 767px) { .faq-grid { grid-template-columns: 1fr; } .faq-grid > * { grid-column: 1 !important; } }
+</style>
+
+<section class="a-head on-stone" aria-labelledby="ab-h1">
+  <div class="wrap">
+    <div class="a-head-grid">
+      <div class="t load-in">
+        <h1 id="ab-h1">About Nandita Thakur</h1>
+        <p class="lede">I am a speaker for women, an entrepreneur and the author of <i>Silent Screams</i>. I speak about rebuilding belief in yourself after life&rsquo;s setbacks, because I have had to do it more than once.</p>
+        <div class="actions"><a class="btn" href="contact.html">Invite Nandita to Speak</a></div>
+      </div>
+      <div class="portrait">{{py: ph("Portrait beside the intro", "Portrait", ratio="4 / 5", dark=True, alt="Nandita Thakur, speaker, entrepreneur and author")}}</div>
+      <div class="facts-wrap">
+        <h2>Quick facts</h2>
+        <dl class="facts">
+          <div><dt>Name</dt><dd>Nandita Thakur</dd></div>
+          <div><dt>Known for</dt><dd>Speaking to women about self-belief, independence and starting again</dd></div>
+          <div><dt>Author of</dt><dd><i>Silent Screams</i></dd></div>
+          <div><dt>Also</dt><dd>Entrepreneur. She built a salon business and a travel business. <span class="pending">business names, if Nandita wants them shown</span></dd></div>
+          <div><dt>Speaks at</dt><dd>Women&rsquo;s events, communities and company sessions</dd></div>
+          <div data-preview-only><dt>Based in</dt><dd><span class="pending">city, only if Nandita wants it shown (row hidden until then)</span></dd></div>
+        </dl>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="story" aria-labelledby="story-h">
+  <div class="wrap">
+    <div class="flow">
+      <div class="col">
+        <h2 id="story-h">My story</h2>
+        <p class="first">I married young, became a mother early and did not finish college. For years my life was my family and my home.</p>
+        <p>When I realised my marriage might not work, I started working towards earning my own money. I built a salon business and a travel business myself. Earning my own money gave me choices I would not otherwise have had.</p>
+      </div>
+      <div class="pair">
+        <div class="a">{{py: ph("Real photo from the client set, landscape crop", "Photograph", ratio="3 / 2", alt="Plain description of the photo")}}</div>
+        <div class="b">{{py: ph("Second photo, portrait crop", "Photograph", ratio="4 / 5", alt="Plain description of the photo")}}</div>
+      </div>
+      <div class="col">
+        <p>My marriage was a narcissistic relationship. It took me a long time to see that, and longer to leave. I separated after 18 years.</p>
+        <p class="note small"><b>Approval</b><span>Nandita must approve this paragraph in writing before launch (Page Copy checklist).</span></p>
+        <p>Then both my parents were diagnosed with cancer, and I looked after them. My father died while my mother was in treatment. After that, I was diagnosed with cancer myself.</p>
+      </div>
+      <div class="solo">{{py: ph("Optional third photo: Nandita today", "Photograph", ratio="3 / 2", alt="Plain description of the photo")}}</div>
+      <div class="col">
+        <p>I was living alone when I was diagnosed. I called my insurance agent to find out what my policy covered and began arranging my treatment before I told my family. I carried on with my online music classes and kept singing through chemotherapy. I am back at work now. <span class="pending">+ one short line in Nandita&rsquo;s words, if she wants one</span></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="band on-stone" aria-labelledby="now-h">
+  <div class="wrap now">
+    <h2 id="now-h" class="sr">What I do now</h2>
+    <div class="cols">
+      <div><h3>Speaking</h3><p class="muted">I speak at women&rsquo;s events, community gatherings and company sessions about self-belief, having an identity of your own, building independence, living through uncertainty and finding enjoyment again.</p><a class="link" href="speaking.html" style="align-self:flex-start">Invite me to speak at your event <span aria-hidden="true">&rarr;</span></a></div>
+      <div><h3>Writing</h3><p class="muted">I wrote <i>Silent Screams</i> to put difficult experiences into words and to find some closure. Writing it is part of why I can speak openly about hard experiences today.</p><a class="link" href="silent-screams.html" style="align-self:flex-start">About the book <span aria-hidden="true">&rarr;</span></a></div>
+      <div><h3>Business</h3><p class="muted">I built a salon business and a travel business myself, and I am back at work now. <span class="pending">+ what Anthem is and Nandita&rsquo;s role, 2&ndash;3 sentences</span></p></div>
+    </div>
+  </div>
+</section>
+
+<section class="on-ink believe" aria-labelledby="bel-h">
+  <div class="wrap">
+    <h2 id="bel-h">What I believe</h2>
+    <ol>
+      <li>Everyone copes in their own way, and none of them is wrong.</li>
+      <li>I share what happened to me. I do not tell anyone what to decide.</li>
+      <li>A small next step is still a step.</li>
+      <li>Laughter and music have a place even in a hard year.</li>
+    </ol>
+    <p class="note small" style="margin-top:32px"><b>Approval</b><span>Nandita approves each line before launch.</span></p>
+  </div>
+</section>
+
+<div class="hidden-section"><div class="wrap"><p class="note"><b>Hidden section</b><span>Music (from the Brief): a photo or embedded video of Nandita singing with a few lines of text. No copy or video supplied yet, so it stays off.</span></p></div></div>
+
+<section class="band" aria-labelledby="faq-h">
+  <div class="wrap faq-grid">
+    <div class="faq-head sr"><h2 id="faq-h">Questions people ask about Nandita</h2></div>
+    <div class="faq-body">
+      {{py: faq([
+        ("Who is Nandita Thakur?", "Nandita Thakur is a speaker for women, an entrepreneur and the author of Silent Screams. She speaks about rebuilding belief in yourself after life&rsquo;s setbacks, drawing on her own experience of ending a long marriage, caring for her parents through cancer and being diagnosed with cancer herself."),
+        ("Why does Nandita speak to women?", "She spent years putting family first and had to rebuild her own confidence, independence and sense of identity more than once. She speaks to women because she knows how it feels to ask, &ldquo;What do I do now?&rdquo;"),
+        ("What is Silent Screams?", "Silent Screams is Nandita&rsquo;s book. She wrote it to put difficult experiences into words and to find some closure. <span class=\"pending\">+ one-line description of the book</span>"),
+        ("Is Nandita a therapist or a coach?", "No. Nandita shares her own experience and leaves the audience with questions to think about. She is not a therapist or a financial adviser, and her talks do not promise a particular result."),
+      ], "afaq")}}
+    </div>
+  </div>
+</section>
+
+{{py: cta_band("Planning an event for women, or a session for your team? Tell me the date, the audience and what you have in mind.")}}
